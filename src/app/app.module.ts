@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImpressaoComponent } from './impressao/impressao.component';
 import { ImpressaoService } from './impressao/impressao.service';
+import { PrincipalComponent } from './principal/principal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImpressaoComponent
+    ImpressaoComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
