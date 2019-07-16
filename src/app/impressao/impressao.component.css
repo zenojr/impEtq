@@ -1,0 +1,14 @@
+.superior {
+    display: flex;
+    justify-content: center;
+}
+
+.superior div {
+    
+    box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
+    
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin: 20px;
+}
