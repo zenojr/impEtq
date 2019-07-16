@@ -1,3 +1,4 @@
+import { ImpressaoService } from './impressao.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImpressaoComponent implements OnInit {
 
-  constructor() { }
+  dados: any;
+  constructor( public impService: ImpressaoService ) { }
 
   ngOnInit() {
+    this.consulta();
+  }
+
+  consulta() {
+    this.impService.getData().subscribe( doc => {
+      let data = this.impService.convertXMLtoJSON(doc);
+      data = data['Root'];
+      data = data['ttItem'];
+      data = data['Registro'];
+      console.log(data);
+      this.dados = data;
+    });
   }
 
 }
