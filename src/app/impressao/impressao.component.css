@@ -1,14 +1,24 @@
 .superior {
     display: flex;
     justify-content: center;
+    font-family: 'Muli';
 }
 
-.superior div {
-    
+.superior div {   
     box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.2);
-    
-    width: 200px;
+    border: 2px solid rgba(179,220,237,0.8);
+    width: 400px;
     height: 200px;
     border-radius: 4px;
     margin: 20px;
 }
+
+.tipoProduto {
+    display: flex;
+    justify-content: center;
+}
+.produto {
+    display: flex;
+    justify-content: center;
+}
+
