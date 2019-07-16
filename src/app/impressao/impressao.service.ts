@@ -25,4 +25,8 @@ export class ImpressaoService {
        return obj;
    }
 
+   getParam() {
+     
+   }
+
 }
