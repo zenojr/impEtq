@@ -1,7 +1,7 @@
+%flex-center { display: flex; justify-content: center }
 
 .superior {
-    display: flex;
-    justify-content: center;
+    @extend %flex-center;
     font-family: 'Muli';
 }
 
@@ -15,8 +15,7 @@
 .tipoProduto, .produto{
     width: 400px;
     height: 200px;
-    display: flex;
-    justify-content: center;
+    @extend %flex-center;
 }
 
 .inferior {
