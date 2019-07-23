@@ -1,5 +1,5 @@
 %flex-center { display: flex; justify-content: center }
-
+%sizebox { width: 400px; }
 
 .superior {
     @extend %flex-center;
@@ -13,10 +13,16 @@
     margin: 20px;
 }
 
-.tipoProduto, .produto{
+
+ .produto{
     width: 400px;
     height: 200px;
     @extend %flex-center;
+}
+
+.tipoProduto {
+    @extend %sizebox;
+    position: relative;
 }
 
 .inferior {
@@ -24,9 +30,21 @@
     flex-direction: column;
 }
 
+.topo_tipo_produto  {
+    text-align: center;
+}
+
 .rolos {
     @extend %flex-center;
     margin-top: 10px;
+}
+
+.tipo_radio {
+    display: flex;
+    
+    flex-direction: column;
+    margin: 0px 50px 0px 20px;
+    text-align: center;
 }
 
 mat-radio-button {
