@@ -1,5 +1,6 @@
 %flex-center { display: flex; justify-content: center }
 
+
 .superior {
     @extend %flex-center;
     font-family: 'Muli';
@@ -25,5 +26,10 @@
 
 .rolos {
     @extend %flex-center;
+    margin-top: 10px;
+}
+
+mat-radio-button {
+    padding: 0px 0px 0px 12px;
 }
 
