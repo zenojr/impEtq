@@ -32,4 +32,11 @@
 mat-radio-button {
     padding: 0px 0px 0px 12px;
 }
+ 
+.consulta {
+    @extend %flex-center;
+}
 
+.send_form {
+    padding: 10px 12px 0px 0px;
+}
