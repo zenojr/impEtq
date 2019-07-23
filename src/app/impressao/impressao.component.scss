@@ -20,6 +20,10 @@
 
 .inferior {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.rolos {
+    @extend %flex-center;
 }
 
