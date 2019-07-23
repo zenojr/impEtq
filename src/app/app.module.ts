@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { ImpressaoComponent } from './impressao/impressao.component';
 import { ImpressaoService } from './impressao/impressao.service';
 import { PrincipalComponent } from './principal/principal.component';
+import { ReimpressaoComponent } from './reimpressao/reimpressao.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ImpressaoComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    ReimpressaoComponent
   ],
   imports: [
     BrowserModule,

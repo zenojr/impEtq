@@ -1,5 +1,5 @@
 %flex-center { display: flex; justify-content: center }
-%sizebox { width: 400px; }
+%sizebox { width: 400px; height: 200px;}
 
 .superior {
     @extend %flex-center;
@@ -15,22 +15,22 @@
 
 
  .produto{
-    width: 400px;
-    height: 200px;
-    @extend %flex-center;
+    
+    @extend %flex-center, %sizebox;
 }
 
 .tipoProduto {
-    @extend %sizebox;
+    @extend %sizebox ;
     position: relative;
 }
+
 
 .inferior {
     display: flex;
     flex-direction: column;
 }
 
-.topo_tipo_produto  {
+.topo_tipo_produto, .topo_produto  {
     text-align: center;
 }
 
