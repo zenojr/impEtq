@@ -6,22 +6,39 @@
                     <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Informe o tipo de produto</ng-template>
                     <mat-form-field>
-                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                        <mat-label>Tipo de produto</mat-label>
+                        <mat-select matInput formControlName="firstCtrl" required>
+                            <mat-option value="cobrenu">Cobre Nú</mat-option>
+                            <mat-option value="cordpar">Cordão Paralelo Torcido</mat-option>
+                            <mat-option value="prodpad">Produto Padrão</mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <div>
-                        <button mat-button matStepperNext>Next</button>
+                        <button mat-button matStepperNext>Próximo</button>
                     </div>
                     </form>
                 </mat-step>
                 <mat-step [stepControl]="secondFormGroup">
                     <form [formGroup]="secondFormGroup">
-                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <ng-template matStepLabel>Informe o produto</ng-template>
                     <mat-form-field>
-                        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                        <mat-label>Produto</mat-label>
+                        <mat-select matInput formControlName="secondCtrl" required>
+                            <mat-option value="bobininha">Bobininha</mat-option>
+                            <mat-option #valor value="rolo">Rolo</mat-option>
+                        </mat-select>
                     </mat-form-field>
+                    <mat-radio-group aria-label="metros" *ngIf="valor.value === rolo" >
+                            <mat-radio-button value="1">100</mat-radio-button>
+                            <mat-radio-button value="2">200</mat-radio-button>
+                            <mat-radio-button value="3">300</mat-radio-button>
+                            <mat-radio-button value="4">400</mat-radio-button>
+                            <mat-radio-button value="5">500</mat-radio-button>
+                            <mat-radio-button value="6">600</mat-radio-button>
+                    </mat-radio-group>
                     <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button matStepperNext>Next</button>
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button matStepperNext>Próximo</button>
                     </div>
                     </form>
                 </mat-step>
@@ -37,16 +54,7 @@
 
         </div>
     <div class="inferior">
-        <div class="rolos_metragem">
-            <mat-radio-group aria-label="metros">
-                <mat-radio-button value="1">100</mat-radio-button>
-                <mat-radio-button value="2">200</mat-radio-button>
-                <mat-radio-button value="3">300</mat-radio-button>
-                <mat-radio-button value="4">400</mat-radio-button>
-                <mat-radio-button value="5">500</mat-radio-button>
-                <mat-radio-button value="6">600</mat-radio-button>
-            </mat-radio-group>
-        </div>
+        
         <div>
             <mat-checkbox>Reinspeção</mat-checkbox>
         </div>
