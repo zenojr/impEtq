@@ -1,5 +1,6 @@
 import { ImpressaoService } from './impressao.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-impressao',
@@ -9,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class ImpressaoComponent implements OnInit {
 
   dados: any;
-  constructor( public impService: ImpressaoService ) { }
+  isLinear = true;
+  tipoProduto: FormGroup;
+  produto: FormGroup;
+
+  constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
     this.consulta();
+    this.tipoProduto = this.formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.produto = this.formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   consulta() {

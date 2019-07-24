@@ -1,33 +1,43 @@
 <div class="container">
     <div class="superior">
         <div class="tipoProduto">
-            <section class="topo_tipo_produto">
-                    <h3>Tipo de Produto</h3>
-            </section>
-            
-            <mat-radio-group class="tipo_radio" aria-label="metros">
-                <mat-radio-button value="1">Cobre Nú</mat-radio-button>
-                <mat-radio-button value="2">Cordão Paralelo Torcido</mat-radio-button>
-                <mat-radio-button value="3">Produto Padrão</mat-radio-button>
-            </mat-radio-group>
-        
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step [stepControl]="tipoProduto">
+                    <form [formGroup]="tipoProduto">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <mat-form-field>
+                        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="produto">
+                    <form [formGroup]="produto">
+                    <ng-template matStepLabel>Fill out your address</ng-template>
+                    <mat-form-field>
+                        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    You are now done.
+                    <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
             
         </div>
-        <div class="tipoProduto">
-                <section class="topo_tipo_produto">
-                        <h3>Produto</h3>
-                </section>
-                
-                <mat-radio-group class="tipo_radio" aria-label="metros">
-                    <mat-radio-button value="1">Bobininha</mat-radio-button>
-                    <mat-radio-button value="3">Rolo</mat-radio-button>
-                </mat-radio-group>
-            
-                
-            </div>
-    </div>
     <div class="inferior">
-        <div class="rolos">
+        <div class="rolos_metragem">
             <mat-radio-group aria-label="metros">
                 <mat-radio-button value="1">100</mat-radio-button>
                 <mat-radio-button value="2">200</mat-radio-button>
@@ -37,12 +47,12 @@
                 <mat-radio-button value="6">600</mat-radio-button>
             </mat-radio-group>
         </div>
-        <div class="rolos">
+        <div>
             <mat-checkbox>Reinspeção</mat-checkbox>
         </div>
         <div class="consulta">
             <form >
-                <mat-form-field class="send_form">
+                <mat-form-field>
                   <input matInput placeholder="Código da bobina" value="">
                 </mat-form-field>
                 <button mat-raised-button color="primary">Verifica Produto Bobina</button>

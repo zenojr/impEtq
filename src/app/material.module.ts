@@ -1,6 +1,8 @@
 import { MatFormFieldModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatOptionModule,
-         MatSelectModule, MatTabsModule, MatCardModule, MatIconModule, MatRadioModule} from '@angular/material';
+         MatSelectModule, MatTabsModule, MatCardModule, MatIconModule, MatRadioModule,
+         MatStepperModule} from '@angular/material';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [MatButtonModule,
@@ -12,7 +14,9 @@ import { NgModule } from '@angular/core';
             MatTabsModule,
             MatCardModule,
             MatIconModule,
-            MatRadioModule],
+            MatRadioModule,
+            FormsModule,
+            ReactiveFormsModule],
   exports: [MatButtonModule,
             MatCheckboxModule,
             MatFormFieldModule,
@@ -22,6 +26,9 @@ import { NgModule } from '@angular/core';
             MatTabsModule,
             MatCardModule,
             MatIconModule,
-            MatRadioModule],
+            MatRadioModule,
+            MatStepperModule,
+            FormsModule,
+            ReactiveFormsModule],
 })
 export class MaterialModule { }
