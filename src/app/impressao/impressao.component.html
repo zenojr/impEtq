@@ -7,7 +7,7 @@
                     <ng-template matStepLabel>Informe o tipo de produto</ng-template>
                     <mat-form-field>
                         <mat-label>Tipo de produto</mat-label>
-                        <mat-select matInput formControlName="firstCtrl" required >
+                        <mat-select matInput formControlName="firstCtrl" required [(value)]="selectedTipoProd">
                             <mat-option value="cobrenu">Cobre Nú</mat-option>
                             <mat-option value="cordpar">Cordão Paralelo Torcido</mat-option>
                             <mat-option value="prodpadr">Produto Padrão</mat-option>
@@ -23,21 +23,21 @@
                     <ng-template matStepLabel>Informe o produto</ng-template>
                     <mat-form-field>
                             <mat-label>Tipo de produto</mat-label>
-                            <mat-select matInput formControlName="secondCtrl" required [(value)]="selected" >
+                            <mat-select matInput formControlName="secondCtrl" required [(value)]="selectedProd" >
                                 <mat-option value="bobininha">Bobininha</mat-option>
                                 <mat-option value="rolo">Rolo</mat-option>
                             </mat-select>
                     </mat-form-field>
-                    <p> {{ selected }} </p>
-                    <div *ngIf=" selected == 'rolo' ">
-                        <mat-radio-group aria-label="metros" >
-                            <mat-radio-button value="1">100</mat-radio-button>
-                            <mat-radio-button value="2">200</mat-radio-button>
-                            <mat-radio-button value="3">300</mat-radio-button>
-                            <mat-radio-button value="4">400</mat-radio-button>
-                            <mat-radio-button value="5">500</mat-radio-button>
-                            <mat-radio-button value="6">600</mat-radio-button>
+                    <div *ngIf=" selectedProd == 'rolo'" class="radioContainer">
+                        <mat-radio-group aria-label="metros" class="radioMetrosGroup">
+                            <mat-radio-button class="radioMetrosBtn" value="1">100</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="2">200</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="3">300</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="4">400</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="5">500</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="6">600</mat-radio-button>
                         </mat-radio-group>
+                        
                     </div>
                     
                     <div>
@@ -47,11 +47,10 @@
                     </form>
                 </mat-step>
                 <mat-step>
-                    <ng-template matStepLabel>Done</ng-template>
-                    You are now done.
+                    <ng-template matStepLabel>Valida</ng-template>
+                    <p> {{ selectedTipoProd + ' ' + selectedProd }} </p>
                     <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button (click)="stepper.reset()">Reset</button>
+                    <button mat-button matStepperPrevious>Voltar</button>
                     </div>
                 </mat-step>
             </mat-horizontal-stepper>

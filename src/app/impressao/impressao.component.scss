@@ -1,3 +1,16 @@
 %flex-center { display: flex; justify-content: center }
 %sizebox { width: 400px; height: 200px;}
 
+.radioContainer{
+    @extend %flex-center;
+}
+
+.radioMetrosGroup {
+    
+    
+    margin: 15px 0;
+  }
+  
+  .radioMetrosBtn {
+    margin: 5px;
+  }

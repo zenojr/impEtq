@@ -8,12 +8,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./impressao.component.scss']
 })
 export class ImpressaoComponent implements OnInit {
-  selected = 'option2';
+  selectedProd = '';
+  selectedTipoProd = '';
   dados: any;
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  
 
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
@@ -26,7 +26,6 @@ export class ImpressaoComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
-    console.log(this.selected);
   }
 
   consulta() {
