@@ -8,7 +8,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 export class ImpressaoService {
 
   urlBase = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq001V2ws.p';
-  param = '?fatorConv=100m&codBobina=d287&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
+  param = '?fatorConv=100m&codBobina=md8665&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
 
   constructor( private http: HttpClient, private xml2Json: NgxXml2jsonService ) { }
 
