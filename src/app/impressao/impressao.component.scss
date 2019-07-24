@@ -6,11 +6,13 @@
 }
 
 .radioMetrosGroup {
-    
-    
     margin: 15px 0;
   }
   
   .radioMetrosBtn {
     margin: 5px;
+  }
+
+  .submitProdContainer {
+      @extend %flex-center;
   }

@@ -47,8 +47,14 @@
                     </form>
                 </mat-step>
                 <mat-step>
-                    <ng-template matStepLabel>Valida</ng-template>
-                    <p> {{ selectedTipoProd + ' ' + selectedProd }} </p>
+                    <ng-template matStepLabel>Resumo</ng-template>
+                    <mat-card>
+                        <ul>
+                            <li>Tipo de Produto: {{ selectedTipoProd }}</li>
+                            <li>Produto: {{ selectedProd }} </li>
+                        </ul>
+                    </mat-card>
+                    
                     <div>
                     <button mat-button matStepperPrevious>Voltar</button>
                     </div>
@@ -56,9 +62,9 @@
             </mat-horizontal-stepper>
 
         </div>
-    <div class="inferior">
+    <div class="submitProdContainer">
         
-        <div>
+        <div >
             <mat-checkbox>Reinspeção</mat-checkbox>
         </div>
         <div class="consulta">
