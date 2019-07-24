@@ -2,9 +2,9 @@
     <div class="superior">
         <div class="tipoProduto">
             <mat-horizontal-stepper [linear]="isLinear" #stepper>
-                <mat-step [stepControl]="tipoProduto">
-                    <form [formGroup]="tipoProduto">
-                    <ng-template matStepLabel>Fill out your name</ng-template>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Informe o tipo de produto</ng-template>
                     <mat-form-field>
                         <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
                     </mat-form-field>
@@ -13,8 +13,8 @@
                     </div>
                     </form>
                 </mat-step>
-                <mat-step [stepControl]="produto">
-                    <form [formGroup]="produto">
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
                     <ng-template matStepLabel>Fill out your address</ng-template>
                     <mat-form-field>
                         <input matInput placeholder="Address" formControlName="secondCtrl" required>
@@ -34,7 +34,7 @@
                     </div>
                 </mat-step>
             </mat-horizontal-stepper>
-            
+
         </div>
     <div class="inferior">
         <div class="rolos_metragem">

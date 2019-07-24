@@ -11,17 +11,17 @@ export class ImpressaoComponent implements OnInit {
 
   dados: any;
   isLinear = true;
-  tipoProduto: FormGroup;
-  produto: FormGroup;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
     this.consulta();
-    this.tipoProduto = this.formBuilder.group({
+    this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
-    this.produto = this.formBuilder.group({
+    this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
   }
