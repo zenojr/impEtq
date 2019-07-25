@@ -50,7 +50,7 @@
                     <ng-template matStepLabel>Resumo</ng-template>
                     <mat-card>
                         <ul>
-                            <li>Tipo de Produto: {{ selectedTipoProd }}</li>
+                            <li>Tipo de Produto: {{ selectedTipoProd | produto }}</li>
                             <li>Produto: {{ selectedProd }} </li>
                         </ul>
                     </mat-card>
@@ -62,12 +62,13 @@
             </mat-horizontal-stepper>
 
         </div>
-    <div class="submitProdContainer">
+    <div class="consultaContainer">
         
-        <div >
-            <mat-checkbox>Reinspeção</mat-checkbox>
+        <div class="consultaTitle" >
+                <mat-checkbox>Reinspeção</mat-checkbox>
         </div>
-        <div class="consulta">
+        <div class="consultaForm">
+                
             <form >
                 <mat-form-field>
                   <input matInput placeholder="Código da bobina" value="">

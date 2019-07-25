@@ -10,9 +10,19 @@
   }
   
   .radioMetrosBtn {
-    margin: 5px;
   }
 
-  .submitProdContainer {
-      @extend %flex-center;
+  .consultaContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+  }
+
+  .consultaTitle {
+
+  }
+
+  .consultaForm {
+
   }
