@@ -14,6 +14,8 @@ export class ImpressaoComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  reinspecao = false;
+  checked = false;
 
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
@@ -26,6 +28,8 @@ export class ImpressaoComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
+    
+
   }
 
   consulta() {
@@ -37,6 +41,14 @@ export class ImpressaoComponent implements OnInit {
       console.log(data);
       this.dados = data;
     });
+  }
+
+  change() {
+    if (this.reinspecao === false) {
+      
+    } else {
+
+    }
   }
 
 }

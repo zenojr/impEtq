@@ -30,12 +30,12 @@
                     </mat-form-field>
                     <div *ngIf=" selectedProd == 'rolo'" class="radioContainer">
                         <mat-radio-group aria-label="metros" class="radioMetrosGroup">
-                            <mat-radio-button class="radioMetrosBtn" value="1">100</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="2">200</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="3">300</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="4">400</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="5">500</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="6">600</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
+                            <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
                         </mat-radio-group>
                         
                     </div>
@@ -65,16 +65,21 @@
     <div class="consultaContainer">
         
         <div class="consultaTitle" >
-                <mat-checkbox>Reinspeção</mat-checkbox>
+            <mat-checkbox [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
         </div>
         <div class="consultaForm">
                 
-            <form >
-                <mat-form-field>
-                  <input matInput placeholder="Código da bobina" value="">
+            
+                <mat-form-field *ngIf="reinspecao === false">
+                  <input  matInput placeholder="Código da bobina" value="">
                 </mat-form-field>
+                <mat-form-field *ngIf="reinspecao === true">
+                        <input  matInput placeholder="Código da RNC" value="">
+                </mat-form-field>
+                
                 <button mat-raised-button color="primary">Verifica Produto Bobina</button>
-            </form>
+            
+            
         </div>
         
     </div>
