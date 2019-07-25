@@ -8,8 +8,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./impressao.component.scss']
 })
 export class ImpressaoComponent implements OnInit {
-  selectedProd = '';
-  selectedTipoProd = '';
+  selectedProd = null;
+  selectedTipoProd = null;
   dados: any;
   isLinear = true;
   firstFormGroup: FormGroup;
@@ -45,7 +45,7 @@ export class ImpressaoComponent implements OnInit {
 
   change() {
     if (this.reinspecao === false) {
-      
+
     } else {
 
     }

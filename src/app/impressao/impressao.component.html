@@ -68,19 +68,13 @@
             <mat-checkbox [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
         </div>
         <div class="consultaForm">
-                
-            
-                <mat-form-field *ngIf="reinspecao === false">
-                  <input  matInput placeholder="Código da bobina" value="">
-                </mat-form-field>
-                <mat-form-field *ngIf="reinspecao === true">
-                        <input  matInput placeholder="Código da RNC" value="">
-                </mat-form-field>
-                
-                <button mat-raised-button color="primary">Verifica Produto Bobina</button>
-            
-            
+            <mat-form-field *ngIf="reinspecao === false">
+                <input  matInput placeholder="Código da bobina" value="">
+            </mat-form-field>
+            <mat-form-field *ngIf="reinspecao === true">
+                    <input  matInput placeholder="Código da RNC" value="">
+            </mat-form-field>
+            <button class="noBtn" [ngClass]="{ okBtn }" *ngIf="selectedTipoProd != null && selectedProd != null" mat-raised-button color="primary">Verifica Produto</button>
         </div>
-        
     </div>
 </div>

@@ -28,7 +28,7 @@
   }
 
   .consultaForm {
-
+    @extend %flex-centeraround-container;
   }
 
   mat-form-field {
