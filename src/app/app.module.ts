@@ -10,6 +10,7 @@ import { ImpressaoComponent } from './impressao/impressao.component';
 import { ImpressaoService } from './impressao/impressao.service';
 import { PrincipalComponent } from './principal/principal.component';
 import { ReimpressaoComponent } from './reimpressao/reimpressao.component';
+import { ProdutoPipe } from './impressao/produto.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReimpressaoComponent } from './reimpressao/reimpressao.component';
     AppComponent,
     ImpressaoComponent,
     PrincipalComponent,
-    ReimpressaoComponent
+    ReimpressaoComponent,
+    ProdutoPipe
   ],
   imports: [
     BrowserModule,
