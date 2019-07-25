@@ -1,7 +1,7 @@
 <div class="container">
     <div class="superior">
         <div class="tipoProduto">
-            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-horizontal-stepper [linear]="isLinear">
                 <mat-step [stepControl]="firstFormGroup">
                     <form [formGroup]="firstFormGroup">
                     <ng-template matStepLabel>Informe o tipo de produto</ng-template>
@@ -14,7 +14,7 @@
                         </mat-select>
                     </mat-form-field>
                     <div>
-                        <button mat-button matStepperNext>Próximo</button>
+                        <button mat-stroked-button color="primary" mat-button matStepperNext>Próximo</button>
                     </div>
                     </form>
                 </mat-step>
@@ -41,8 +41,8 @@
                     </div>
                     
                     <div>
-                        <button mat-button matStepperPrevious>Voltar</button>
-                        <button mat-button matStepperNext>Próximo</button>
+                        <button mat-stroked-button color="primary" mat-button matStepperPrevious>Voltar</button>
+                        <button mat-stroked-button color="primary" mat-button matStepperNext>Próximo</button>
                     </div>
                     </form>
                 </mat-step>
@@ -56,7 +56,7 @@
                     </mat-card>
                     
                     <div>
-                    <button mat-button matStepperPrevious>Voltar</button>
+                    <button mat-stroked-button color="primary" mat-button matStepperPrevious>Voltar</button>
                     </div>
                 </mat-step>
             </mat-horizontal-stepper>

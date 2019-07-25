@@ -1,8 +1,13 @@
 %flex-center { display: flex; justify-content: center }
 %sizebox { width: 400px; height: 200px;}
-
+%flex-centeraround-container { 
+                    display: flex; 
+                    align-items: center;
+                    justify-content: space-around;
+                    flex-direction: column; 
+                    }
 .radioContainer{
-    @extend %flex-center;
+    @extend %flex-centeraround-container;
 }
 
 .radioMetrosGroup {
@@ -10,13 +15,12 @@
   }
   
   .radioMetrosBtn {
+      padding-left: 20px;
+      padding-right: 5px;
   }
 
   .consultaContainer {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-direction: column;
+      @extend %flex-centeraround-container;
   }
 
   .consultaTitle {
@@ -25,4 +29,12 @@
 
   .consultaForm {
 
+  }
+
+  mat-form-field {
+      @extend %flex-centeraround-container;
+  }
+
+  mat-select {
+      width: 200px;
   }
