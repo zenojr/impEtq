@@ -1,87 +1,55 @@
 <div class="container">
     <div class="superior">
-        <div class="tipoProduto">
-            <mat-horizontal-stepper [linear]="isLinear">
-                <mat-step [stepControl]="firstFormGroup">
-                    <form [formGroup]="firstFormGroup">
-                    <ng-template matStepLabel>Informe o tipo de produto</ng-template>
-                    <mat-form-field>
-                        <mat-label>Tipo de produto</mat-label>
-                        <mat-select matInput formControlName="firstCtrl" required [(value)]="selectedTipoProd">
-                            <mat-option value="cobrenu">Cobre Nú</mat-option>
-                            <mat-option value="cordpar">Cordão Paralelo Torcido</mat-option>
-                            <mat-option value="prodpadr">Produto Padrão</mat-option> 
-                        </mat-select>
-                    </mat-form-field>
-                    <div>
-                        <button mat-stroked-button color="primary" mat-button matStepperNext>Próximo</button>
-                    </div>
-                    </form>
-                </mat-step>
-                <mat-step [stepControl]="secondFormGroup">
-                    <form [formGroup]="secondFormGroup">
-                    <ng-template matStepLabel>Informe o produto</ng-template>
-                    <mat-form-field>
-                            <mat-label>Tipo de produto</mat-label>
-                            <mat-select matInput formControlName="secondCtrl" required [(value)]="selectedProd" >
-                                <mat-option value="bobininha">Bobininha</mat-option>
-                                <mat-option value="rolo">Rolo</mat-option>
-                            </mat-select>
-                    </mat-form-field>
-                    <div *ngIf=" selectedProd == 'rolo'" class="radioContainer">
-                        <mat-radio-group aria-label="metros" class="radioMetrosGroup">
-                            <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
-                            <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
-                        </mat-radio-group>
-                        
-                    </div>
-                    
-                    <div>
-                        <button mat-stroked-button color="primary" mat-button matStepperPrevious>Voltar</button>
-                        <button mat-stroked-button color="primary" mat-button matStepperNext>Próximo</button>
-                    </div>
-                    </form>
-                </mat-step>
-                <mat-step>
-                    <ng-template matStepLabel>Resumo</ng-template>
-                    <mat-card>
-                        <ul>
-                            <li>Tipo de Produto: {{ selectedTipoProd | produto }}</li>
-                            <li>Produto: {{ selectedProd }} </li>
-                        </ul>
-                    </mat-card>
-                    
-                    <div>
-                    <button mat-stroked-button color="primary" mat-button matStepperPrevious>Voltar</button>
-                    </div>
-                </mat-step>
-            </mat-horizontal-stepper>
-
-        </div>
-    <div class="consultaContainer">
-        
-        <div class="consultaTitle" >
-            <mat-checkbox [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
-        </div>
-        <div>
-            
-        </div>
-        <div class="consultaForm">
-            <mat-form-field *ngIf="reinspecao === false">
-                <input  matInput placeholder="Código da bobina" value="">
-            </mat-form-field>
-            <mat-form-field *ngIf="reinspecao === true">
-                    <input  matInput placeholder="Código da RNC" value="">
-            </mat-form-field>
-            <button  *ngIf="selectedTipoProd != null && selectedProd != null" mat-raised-button color="primary">Verifica Produto</button>
-        </div>
+        <div class="tipoProduto">                
+<form [formGroup]="firstFormGroup">
+<ng-template matStepLabel>Informe o tipo de produto</ng-template>
+<mat-form-field>
+    <mat-label>Tipo de produto</mat-label>
+    <mat-select matInput formControlName="firstCtrl" required [(value)]="selectedTipoProd">
+        <mat-option value="cobrenu">Cobre Nú</mat-option>
+        <mat-option value="cordpar">Cordão Paralelo Torcido</mat-option>
+        <mat-option value="prodpadr">Produto Padrão</mat-option> 
+    </mat-select>
+</mat-form-field>
+</form>
+             
+<form [formGroup]="secondFormGroup">
+<ng-template matStepLabel>Informe o produto</ng-template>
+<mat-form-field>
+    <mat-label>Tipo de produto</mat-label>
+        <mat-select matInput formControlName="secondCtrl" required [(value)]="selectedProd" >
+            <mat-option value="bobininha">Bobininha</mat-option>
+            <mat-option value="rolo">Rolo</mat-option>
+        </mat-select>
+</mat-form-field>
+<div *ngIf=" selectedProd == 'rolo'" class="radioContainer">
+    <mat-radio-group aria-label="metros" class="radioMetrosGroup">
+        <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
+    </mat-radio-group> 
+</div>
+</form>
+</div>
+<div class="consultaContainer">        
+    <div class="consultaTitle" >
+        <mat-checkbox [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
+    </div>
+    <div class="consultaForm">
+        <mat-form-field *ngIf="reinspecao === false">
+            <input  matInput placeholder="Código da bobina" value="">
+        </mat-form-field>
+        <mat-form-field *ngIf="reinspecao === true">
+                <input  matInput placeholder="Código da RNC" value="">
+        </mat-form-field>
+        <button  *ngIf="selectedTipoProd != null && selectedProd != null" mat-raised-button color="primary">Verifica Produto</button>
     </div>
 </div>
+</div>
 <div>
-    
+
 </div>
 </div>
