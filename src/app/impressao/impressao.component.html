@@ -10,7 +10,7 @@
                         <mat-select matInput formControlName="firstCtrl" required [(value)]="selectedTipoProd">
                             <mat-option value="cobrenu">Cobre Nú</mat-option>
                             <mat-option value="cordpar">Cordão Paralelo Torcido</mat-option>
-                            <mat-option value="prodpadr">Produto Padrão</mat-option>
+                            <mat-option value="prodpadr">Produto Padrão</mat-option> 
                         </mat-select>
                     </mat-form-field>
                     <div>
@@ -67,6 +67,9 @@
         <div class="consultaTitle" >
             <mat-checkbox [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
         </div>
+        <div>
+            
+        </div>
         <div class="consultaForm">
             <mat-form-field *ngIf="reinspecao === false">
                 <input  matInput placeholder="Código da bobina" value="">
@@ -77,4 +80,8 @@
             <button  *ngIf="selectedTipoProd != null && selectedProd != null" mat-raised-button color="primary">Verifica Produto</button>
         </div>
     </div>
+</div>
+<div>
+    
+</div>
 </div>

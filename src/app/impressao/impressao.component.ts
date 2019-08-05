@@ -28,8 +28,6 @@ export class ImpressaoComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
-    
-
   }
 
   consulta() {
@@ -43,12 +41,6 @@ export class ImpressaoComponent implements OnInit {
     });
   }
 
-  change() {
-    if (this.reinspecao === false) {
-
-    } else {
-
-    }
-  }
+  
 
 }
