@@ -12,35 +12,40 @@
 
 .radioMetrosGroup {
     margin: 15px 0;
-  }
+}
   
-  .radioMetrosBtn {
-      padding-left: 20px;
-      padding-right: 5px;
-  }
+.radioMetrosBtn {
+    padding-left: 20px;
+    padding-right: 5px;
+}
 
-  .consultaContainer {
-      @extend %flex-centeraround-container;
-  }
-
-  .consultaTitle {
-
-  }
-
-  .consultaForm {
+.consultaContainer {
     @extend %flex-centeraround-container;
-  }
+}
 
-  mat-form-field {
-      @extend %flex-centeraround-container;
-  }
+.consultaTitle {
 
-  mat-select {
-      width: 200px;
-  }
+}
 
-  .noBtn {
-      
-  }
+.consultaForm {
+@extend %flex-centeraround-container;
+}
 
-  .okBtn {}
+mat-select {
+    width: 200px;
+}
+
+.imprimir {
+    @extend %flex-centeraround-container;
+}
+
+.imprimirForm input {
+    flex-direction: row;
+}
+
+.superior {
+    @extend %flex-centeraround-container;
+}
+
+
+
