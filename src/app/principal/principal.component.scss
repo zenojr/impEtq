@@ -1,5 +1,6 @@
 %flex-center { width: 100%; 
                display: flex; }
+%adjust-itens { margin-right: 15%; }               
 
 .principalContainer {
     @extend %flex-center;
@@ -7,8 +8,13 @@
 
 .menu {
     width: 100%;
+    
 }
 
 .logoPrincipal {    
     height: 48px;    
+}
+
+.itens {
+    @extend %adjust-itens;
 }

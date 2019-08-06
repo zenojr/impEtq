@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="superior">
-        <div class="tipoProduto">                
+<div class="superior">
+<div class="tipoProduto">                
 <form [formGroup]="firstFormGroup">
 <ng-template matStepLabel>Informe o tipo de produto</ng-template>
 <mat-form-field>
@@ -16,7 +16,7 @@
 <form [formGroup]="secondFormGroup">
 <ng-template matStepLabel>Informe o produto</ng-template>
 <mat-form-field>
-    <mat-label>Tipo de produto</mat-label>
+    <mat-label>Produto</mat-label>
         <mat-select matInput formControlName="secondCtrl" required [(value)]="selectedProd" >
             <mat-option value="bobininha">Bobininha</mat-option>
             <mat-option value="rolo">Rolo</mat-option>

@@ -3,27 +3,35 @@
 <img class="logoPrincipal" src="../../assets/img/logoCorfio2019.png" alt="">
 <div class="menu">
     <mat-tab-group dynamicHeight animationDuration="200ms" color="accent" backgroundColor="primary">
-            <mat-tab label="Impressão"> 
-                <ng-template mat-tab-label>
-                    <mat-icon class="example-tab-icon">done</mat-icon>
-                    Impressão
-                </ng-template>    
+        <mat-tab label="Impressão"> 
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">done</mat-icon>
+                Impressão
+            </ng-template> 
+            <div class="itens">
                 <app-impressao></app-impressao>
-            </mat-tab>
-            <mat-tab > 
-                <ng-template mat-tab-label>
-                    <mat-icon class="example-tab-icon">settings_backup_restore</mat-icon>
-                        Reimpressão
-                </ng-template>
+            </div>   
+            
+        </mat-tab>
+        <mat-tab > 
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">settings_backup_restore</mat-icon>
+                    Reimpressão
+            </ng-template>
+            <div class="itens">
                 <app-reimpressao></app-reimpressao>
-            </mat-tab>
-            <mat-tab>
-                <ng-template mat-tab-label>
-                    <mat-icon class="example-tab-icon">local_printshop</mat-icon>
-                    Impressoras 
-                </ng-template>
+            </div>
+            
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">local_printshop</mat-icon>
+                Impressoras 
+            </ng-template>
+            <div class="itens">
                 <app-impressoras></app-impressoras>
-            </mat-tab>
-        </mat-tab-group>    
+            </div>
+        </mat-tab>
+    </mat-tab-group>    
 </div>
 </div>
