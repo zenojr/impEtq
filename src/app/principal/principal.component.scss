@@ -1,20 +1,15 @@
+%flex-center { width: 100%; display: flex; }
+
 .principalContainer {
-    width: 100%;
-    display: flex;
+    @extend %flex-center;
 }
-
-
-
 
 .menu {
     width: 100%;
 }
 
-
-
 .logoPrincipal {    
-    height: 48px;
-    
+    height: 48px;    
 }
 
 
