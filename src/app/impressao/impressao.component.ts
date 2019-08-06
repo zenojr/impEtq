@@ -39,15 +39,15 @@ export class ImpressaoComponent implements OnInit {
 
   }
 
-  changeFator(value) {
-    console.log(value);
 
-    console.log(this.fatorConv);
+
+  consultaImpressao() {
+    this.impService.getImpressao(
+                    this.fatorConv, this.codBobina, this.reInspec, this.produto, this.tipoProd, this.opcao)
+                    .subscribe( doc => {
+                      console.log(doc);
+                    });
   }
-
-  // consultaImpressao() {
-  //   this.impService.getImpressao( fatorConv,  )
-  // }
 
   consulta() {
     this.impService.getData().subscribe( doc => {
