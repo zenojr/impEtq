@@ -22,17 +22,19 @@
             <mat-option value="rolo">Rolo</mat-option>
         </mat-select>
 </mat-form-field>
-<div *ngIf=" selectedProd == 'rolo'" class="radioContainer">
-    <mat-radio-group aria-label="metros" class="radioMetrosGroup">
-        <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
-    </mat-radio-group> 
-</div>
+
+
 </form>
+<div *ngIf=" selectedProd == 'rolo'" class="radioContainer">
+        <mat-radio-group aria-label="metros" class="radioMetrosGroup" [(ngModel)]="fatorConv">
+            <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
+            <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
+            <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
+            <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
+            <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
+            <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
+        </mat-radio-group> 
+    </div>
 </div>
 <div class="consultaContainer">        
     <div class="consultaTitle" >
@@ -50,6 +52,6 @@
 </div>
 </div>
 <div>
-
+        {{ fatorConv }}
 </div>
 </div>

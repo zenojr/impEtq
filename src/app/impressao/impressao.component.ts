@@ -17,6 +17,13 @@ export class ImpressaoComponent implements OnInit {
   reinspecao = false;
   checked = false;
 
+  fatorConv = '100';
+  codBobina = '';
+  reInspec = '';
+  produto = '';
+  tipoProd = '';
+  opcao = '';
+
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
@@ -28,7 +35,19 @@ export class ImpressaoComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
+    console.log( 'fator:' + this.fatorConv);
+
   }
+
+  changeFator(value) {
+    console.log(value);
+
+    console.log(this.fatorConv);
+  }
+
+  // consultaImpressao() {
+  //   this.impService.getImpressao( fatorConv,  )
+  // }
 
   consulta() {
     this.impService.getData().subscribe( doc => {
