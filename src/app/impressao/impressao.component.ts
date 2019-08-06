@@ -11,6 +11,7 @@ export class ImpressaoComponent implements OnInit {
   selectedProd = null;
   selectedTipoProd = null;
   dados: any;
+  dataQuery: any;
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -19,10 +20,10 @@ export class ImpressaoComponent implements OnInit {
 
   fatorConv = '100';
   codBobina = '';
-  reInspec = '';
+  reInspec = 'nao';
   produto = '';
   tipoProd = '';
-  opcao = '';
+  opcao = 'Impressao';
 
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
@@ -45,7 +46,13 @@ export class ImpressaoComponent implements OnInit {
     this.impService.getImpressao(
                     this.fatorConv, this.codBobina, this.reInspec, this.produto, this.tipoProd, this.opcao)
                     .subscribe( doc => {
-                      console.log(doc);
+                      let data = this.impService.convertXMLtoJSON(doc);
+                      data = data['Root'];
+                      data = data['ttItem'];
+                      data = data['Registro'];
+                      console.log(data);
+                      this.dataQuery = data;
+                      return this.dataQuery;
                     });
   }
 
