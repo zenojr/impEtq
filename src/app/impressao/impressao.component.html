@@ -42,7 +42,7 @@
     </div>
     <div class="consultaForm">
         <mat-form-field *ngIf="reinspecao === false">
-            <input  matInput placeholder="Código da bobina" [(ngModel)]="codBobina">
+            <input  matInput placeholder="Código da bobina" [(ngModel)]="codBobina" autocomplete="off">
         </mat-form-field>
         <mat-form-field *ngIf="reinspecao === true">
                 <input  matInput placeholder="Código da RNC" value="">
@@ -59,7 +59,7 @@
         <li>tipoProd: {{ tipoProd }}</li> 
         <li>produto: {{ produto }}</li>
         <li>codBobina: {{ codBobina }}</li>
-        
+        <li *ngIf="dataQuery != null" > {{ dataQuery.itCodigo }}  {{ dataQuery.descItem }} {{ dataQuery.codRie }} </li>
     </ul>
 </div>
 </div>

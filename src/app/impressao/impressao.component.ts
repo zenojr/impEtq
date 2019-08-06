@@ -28,7 +28,7 @@ export class ImpressaoComponent implements OnInit {
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
   ngOnInit() {
-    this.consulta();
+    // this.consulta();
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -52,20 +52,19 @@ export class ImpressaoComponent implements OnInit {
                       data = data['Registro'];
                       console.log(data);
                       this.dataQuery = data;
-                      return this.dataQuery;
                     });
   }
 
-  consulta() {
-    this.impService.getData().subscribe( doc => {
-      let data = this.impService.convertXMLtoJSON(doc);
-      data = data['Root'];
-      data = data['ttItem'];
-      data = data['Registro'];
-      console.log(data);
-      this.dados = data;
-    });
-  }
+  // consulta() {
+  //   this.impService.getData().subscribe( doc => {
+  //     let data = this.impService.convertXMLtoJSON(doc);
+  //     data = data['Root'];
+  //     data = data['ttItem'];
+  //     data = data['Registro'];
+  //     console.log(data);
+  //     this.dados = data;
+  //   });
+  // }
 
   
 
