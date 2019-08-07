@@ -32,7 +32,7 @@
 }
 
 mat-select {
-    width: 200px;
+    
 }
 
 .imprimir {
@@ -45,6 +45,7 @@ mat-select {
 
 .superior {
     @extend %flex-centeraround-container;
+    margin-top: 10px;
 }
 
 
