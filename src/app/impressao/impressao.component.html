@@ -1,7 +1,7 @@
 <div class="container">
 <div class="superior">
 <div class="tipoProduto">                
-    <form   [formGroup]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
     <ng-template matStepLabel>Informe o tipo de produto</ng-template>
         <mat-form-field>
             <mat-label>Tipo de produto</mat-label>
@@ -39,14 +39,14 @@
 
 <div class="consultaContainer">        
     <div class="consultaTitle" >
-        <mat-checkbox [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
+        <mat-checkbox (click)="checkReinsp()" [(ngModel)]="reinspecao" >Reinspeção</mat-checkbox>                      
     </div>
     <div class="consultaForm">
         <mat-form-field *ngIf="reinspecao === false">
             <input  matInput placeholder="Código da bobina" [(ngModel)]="codBobina" autocomplete="off">
         </mat-form-field>
         <mat-form-field *ngIf="reinspecao === true">
-                <input  matInput placeholder="Código da RNC" value="">
+                <input  matInput placeholder="Código da RNC" value="" autocomplete="off">
         </mat-form-field>
         <button (click)="consultaImpressao()" 
         *ngIf="tipoProd != '' && produto != ''" 
@@ -68,12 +68,13 @@
     </form>
     <button mat-raised-button color="warn">Imprimir</button>
 </div>
-<!-- <div>
+<div>
     <ul>
         <li>fatorConv: {{ fatorConv }} </li>
         <li>tipoProd: {{ tipoProd }}</li> 
         <li>produto: {{ produto }}</li>
         <li>codBobina: {{ codBobina }}</li>
+        <li>reInspec: {{ reInspec }}</li>
     </ul>
-</div> -->
+</div>
 </div>

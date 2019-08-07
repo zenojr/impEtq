@@ -23,16 +23,8 @@
     @extend %flex-centeraround-container;
 }
 
-.consultaTitle {
-
-}
-
 .consultaForm {
 @extend %flex-centeraround-container;
-}
-
-mat-select {
-    
 }
 
 .imprimir {
@@ -48,5 +40,7 @@ mat-select {
     margin-top: 10px;
 }
 
-
+mat-form-field {
+    margin-left: 10px;
+}
 

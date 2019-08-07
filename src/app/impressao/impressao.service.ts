@@ -8,7 +8,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 export class ImpressaoService {
 
   urlBase = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq001V2ws.p';
-  param = '?fatorConv=100m&codBobina=b201&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
+  param   = '?fatorConv=100m&codBobina=b201&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
 
 
   constructor( private http: HttpClient, private xml2Json: NgxXml2jsonService ) { }
@@ -26,9 +26,9 @@ export class ImpressaoService {
 
   convertXMLtoJSON(doc) {
       const dataRec = doc.toString();
-      const parser = new DOMParser();
-      const xml = parser.parseFromString( dataRec, 'text/xml' );
-      const obj =  this.xml2Json.xmlToJson(xml);
+      const parser  = new DOMParser();
+      const xml     = parser.parseFromString( dataRec, 'text/xml' );
+      const obj     =  this.xml2Json.xmlToJson(xml);
       return obj;
   }
 

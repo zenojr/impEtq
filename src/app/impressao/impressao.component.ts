@@ -11,18 +11,17 @@ import { Subscription, Observable } from 'rxjs';
 export class ImpressaoComponent implements OnInit, OnDestroy {
   firstObsSubs: Subscription;
   dataQuery: any;
-  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  reinspecao = false;
-
-  fatorConv = '100';
-  codBobina = '';
-  reInspec = 'nao';
-  produto = '';
-  tipoProd = '';
-  opcao = 'Impressao';
-  erro = false;
+  reinspecao  = false;
+  isLinear    = true;
+  fatorConv   = '100';
+  codBobina   = '';
+  reInspec    = 'nao';
+  produto     = '';
+  tipoProd    = '';
+  opcao       = 'Impressao';
+  erro        = false;
 
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
@@ -40,46 +39,55 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   }
 
+  checkReinsp() {
+    if (this.reinspecao === false) {
+      this.reInspec = 'sim';
+    } else {
+      this.reInspec = 'nao';
+    }
+  }
+
+  consultaImpressao() {
+  this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
+  this.produto, this.tipoProd, this.opcao)
+  .subscribe( doc => {
+    console.log(doc);
+    if ( doc.includes('Erro') ) {
+      alert('ERRO: ' + doc + ' ');
+      this.dataQuery    = doc;
+      this.erro         = true;
+      this.codBobina    = '';
+      console.log(this.dataQuery);
+    } else {
+      this.erro = false;
+      let data  = this.impService.convertXMLtoJSON(doc);
+      data      = data['Root'];
+      data      = data['ttItem'];
+      data      = data['Registro'];
+      console.log(data);
+      this.dataQuery = data;
+    }
+    });
+
+  }
+
   consultaImpObservable() {
     const customObservable = Observable.create( observer => {
-      const req = this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
-      this.produto, this.tipoProd, this.opcao);
+      const req = this.impService.getImpressao( this.fatorConv, this.codBobina,
+      this.reInspec, this.produto, this.tipoProd, this.opcao);
       observer.next(req);
     });
 
     this.firstObsSubs = customObservable.subscribe( doc => {
-      let data = this.impService.convertXMLtoJSON(doc);
-      data = data['Root'];
-      data = data['ttItem'];
-      data = data['Registro'];
+      let data  = this.impService.convertXMLtoJSON(doc);
+      data      = data['Root'];
+      data      = data['ttItem'];
+      data      = data['Registro'];
       console.log(data);
-      
     });
     this.firstObsSubs.unsubscribe();
   }
 
-  consultaImpressao() {
-    this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
-    this.produto, this.tipoProd, this.opcao)
-    .subscribe( doc => {
-      console.log(doc);
-      if ( doc.includes('Erro') ) {
-        alert('ERRO:' + doc);
-        this.dataQuery = doc;
-        this.erro = true;
-        console.log(this.dataQuery);
-      } else {
-        this.erro = false;
-        let data = this.impService.convertXMLtoJSON(doc);
-        data = data['Root'];
-        data = data['ttItem'];
-        data = data['Registro'];
-        console.log(data);
-        this.dataQuery = data;
-      }
-      });
-
-  }
 
   // consulta() {
   //   this.impService.getData().subscribe( doc => {
