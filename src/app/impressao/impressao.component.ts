@@ -9,7 +9,7 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./impressao.component.scss']
 })
 export class ImpressaoComponent implements OnInit, OnDestroy {
-
+  firstObsSubs: Subscription;
   dataQuery: any;
   isLinear = true;
   firstFormGroup: FormGroup;
@@ -39,10 +39,31 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   }
 
+  consultaImpObservable() {
+    const customObservable = Observable.create( observer => {
+      const req = this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
+      this.produto, this.tipoProd, this.opcao);
+      observer.next(req);
+    });
+
+    this.firstObsSubs = customObservable.subscribe( doc => {
+      let data = this.impService.convertXMLtoJSON(doc);
+      data = data['Root'];
+      data = data['ttItem'];
+      data = data['Registro'];
+      console.log(data);
+      this.dataQuery = data;
+    });
+  }
+
   consultaImpressao() {
     this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
     this.produto, this.tipoProd, this.opcao)
     .subscribe( doc => {
+      console.log(doc);
+      if ( doc.includes('Erro') ) {
+        alert('ERRO:' + doc);
+      }
       let data = this.impService.convertXMLtoJSON(doc);
       data = data['Root'];
       data = data['ttItem'];

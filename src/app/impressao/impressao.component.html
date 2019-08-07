@@ -48,7 +48,7 @@
         <mat-form-field *ngIf="reinspecao === true">
                 <input  matInput placeholder="Código da RNC" value="">
         </mat-form-field>
-        <button (click)="consultaImpressao()" 
+        <button (click)="consultaImpObservable()" 
         *ngIf="tipoProd != '' && produto != ''" 
         mat-raised-button color="primary">Verifica Produto</button>
     </div>
