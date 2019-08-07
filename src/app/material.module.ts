@@ -1,6 +1,6 @@
 import { MatFormFieldModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatOptionModule,
          MatSelectModule, MatTabsModule, MatCardModule, MatIconModule, MatRadioModule,
-         MatStepperModule} from '@angular/material';
+         MatStepperModule, MatSnackBarModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
             MatIconModule,
             MatRadioModule,
             FormsModule,
-            ReactiveFormsModule],
+            ReactiveFormsModule,
+            MatSnackBarModule],
   exports: [MatButtonModule,
             MatCheckboxModule,
             MatFormFieldModule,
@@ -29,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
             MatRadioModule,
             MatStepperModule,
             FormsModule,
-            ReactiveFormsModule],
+            ReactiveFormsModule,
+            MatSnackBarModule],
 })
 export class MaterialModule { }

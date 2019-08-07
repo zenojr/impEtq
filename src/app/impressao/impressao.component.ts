@@ -2,6 +2,7 @@ import { ImpressaoService } from './impressao.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-impressao',
@@ -23,7 +24,9 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   opcao       = 'Impressao';
   erro        = false;
 
-  constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
+  constructor( public  impService: ImpressaoService,
+               private formBuilder: FormBuilder,
+               private snackBar: MatSnackBar ) { }
 
   ngOnInit() {
     // this.consulta();
@@ -53,7 +56,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   .subscribe( doc => {
     console.log(doc);
     if ( doc.includes('Erro') ) {
-      alert('ERRO: ' + doc + ' ');
+      this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 15000 });
       this.dataQuery    = doc;
       this.erro         = true;
       this.codBobina    = '';
@@ -71,6 +74,13 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   }
 
+  sendWithEnter(event) {
+    if ( event.key === 'Enter' ) {
+      this.consultaImpressao();
+    }
+  }
+
+
   consultaImpObservable() {
     const customObservable = Observable.create( observer => {
       const req = this.impService.getImpressao( this.fatorConv, this.codBobina,
@@ -87,6 +97,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
     });
     this.firstObsSubs.unsubscribe();
   }
+
 
 
   // consulta() {

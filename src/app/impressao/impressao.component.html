@@ -5,10 +5,11 @@
     <ng-template matStepLabel>Informe o tipo de produto</ng-template>
         <mat-form-field>
             <mat-label>Tipo de produto</mat-label>
-            <mat-select matInput formControlName="firstCtrl" required [(value)]="tipoProd">
-                <mat-option value="Cobre">Cobre Nú</mat-option>
+            <mat-select matInput formControlName="firstCtrl" 
+                        required [(value)]="tipoProd">
+                <mat-option value="Cobre">      Cobre Nú        </mat-option>
                 <mat-option value="Cord">Cordão Paralelo Torcido</mat-option>
-                <mat-option value="Produto Pad">Produto Padrão</mat-option> 
+                <mat-option value="Produto Pad">  Produto Padrão</mat-option> 
             </mat-select>
         </mat-form-field>
     </form>
@@ -27,15 +28,15 @@
 </div>
 
 <div *ngIf=" produto == 'rolo'" class="radioContainer">
-        <mat-radio-group aria-label="metros" class="radioMetrosGroup" [(ngModel)]="fatorConv">
-            <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
-            <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
-            <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
-            <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
-            <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
-            <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
-        </mat-radio-group> 
-    </div>
+    <mat-radio-group aria-label="metros" class="radioMetrosGroup" [(ngModel)]="fatorConv">
+        <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="200">200</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="300">300</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="400">400</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="500">500</mat-radio-button>
+        <mat-radio-button class="radioMetrosBtn" value="600">600</mat-radio-button>
+    </mat-radio-group> 
+</div>
 
 <div class="consultaContainer">        
     <div class="consultaTitle" >
@@ -43,14 +44,20 @@
     </div>
     <div class="consultaForm">
         <mat-form-field *ngIf="reinspecao === false">
-            <input  matInput placeholder="Código da bobina" [(ngModel)]="codBobina" autocomplete="off">
+            <input  matInput 
+                    placeholder ="Código da bobina" 
+                    [(ngModel)] ="codBobina" 
+                    autocomplete="off"
+                    (keydown)   ="sendWithEnter($event)">
         </mat-form-field>
         <mat-form-field *ngIf="reinspecao === true">
-                <input  matInput placeholder="Código da RNC" value="" autocomplete="off">
+            <input  matInput placeholder="Código da RNC" 
+                    value="" 
+                    autocomplete="off">
         </mat-form-field>
         <button (click)="consultaImpressao()" 
-        *ngIf="tipoProd != '' && produto != ''" 
-        mat-raised-button color="primary">Verifica Produto</button>
+                *ngIf="tipoProd != '' && produto != ''" 
+                mat-raised-button color="primary">Verifica Produto</button>
     </div>
 </div>
 </div>
@@ -68,13 +75,13 @@
     </form>
     <button mat-raised-button color="warn">Imprimir</button>
 </div>
-<div>
+<!-- <div>
     <ul>
-        <li>fatorConv: {{ fatorConv }} </li>
-        <li>tipoProd: {{ tipoProd }}</li> 
-        <li>produto: {{ produto }}</li>
-        <li>codBobina: {{ codBobina }}</li>
-        <li>reInspec: {{ reInspec }}</li>
+        <li>fatorConv:  {{ fatorConv }}</li>
+        <li>tipoProd:   {{ tipoProd  }}</li> 
+        <li>produto:    {{ produto   }}</li>
+        <li>codBobina:  {{ codBobina }}</li>
+        <li>reInspec:   {{ reInspec  }}</li>
     </ul>
-</div>
+</div> -->
 </div>
