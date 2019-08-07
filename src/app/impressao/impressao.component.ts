@@ -22,6 +22,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   produto = '';
   tipoProd = '';
   opcao = 'Impressao';
+  erro = false;
 
   constructor( public impService: ImpressaoService, private formBuilder: FormBuilder ) { }
 
@@ -52,8 +53,9 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
       data = data['ttItem'];
       data = data['Registro'];
       console.log(data);
-      this.dataQuery = data;
+      
     });
+    this.firstObsSubs.unsubscribe();
   }
 
   consultaImpressao() {
@@ -63,14 +65,19 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
       console.log(doc);
       if ( doc.includes('Erro') ) {
         alert('ERRO:' + doc);
+        this.dataQuery = doc;
+        this.erro = true;
+        console.log(this.dataQuery);
+      } else {
+        this.erro = false;
+        let data = this.impService.convertXMLtoJSON(doc);
+        data = data['Root'];
+        data = data['ttItem'];
+        data = data['Registro'];
+        console.log(data);
+        this.dataQuery = data;
       }
-      let data = this.impService.convertXMLtoJSON(doc);
-      data = data['Root'];
-      data = data['ttItem'];
-      data = data['Registro'];
-      console.log(data);
-      this.dataQuery = data;
-    }, error => { console.log(error); });
+      });
 
   }
 

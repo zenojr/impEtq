@@ -48,17 +48,17 @@
         <mat-form-field *ngIf="reinspecao === true">
                 <input  matInput placeholder="Código da RNC" value="">
         </mat-form-field>
-        <button (click)="consultaImpObservable()" 
+        <button (click)="consultaImpressao()" 
         *ngIf="tipoProd != '' && produto != ''" 
         mat-raised-button color="primary">Verifica Produto</button>
     </div>
 </div>
 </div>
-<div class="imprimir" *ngIf="dataQuery != null">
+<div class="imprimir" *ngIf="dataQuery != null && !erro">
     <ul>
         <li> {{ dataQuery.itCodigo }}  {{ dataQuery.descItem }} {{ dataQuery.codRie }} </li>
     </ul>
-    <form class="imprimirForm">
+    <form class="imprimirForm" *ngIf="!erro"> 
         <mat-form-field>
             <input matInput placeholder="Máquina" autocomplete="off">
         </mat-form-field>
