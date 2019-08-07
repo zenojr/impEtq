@@ -1,22 +1,20 @@
 import { ImpressaoService } from './impressao.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-impressao',
   templateUrl: './impressao.component.html',
   styleUrls: ['./impressao.component.scss']
 })
-export class ImpressaoComponent implements OnInit {
-  selectedProd = null;
-  selectedTipoProd = null;
-  dados: any;
+export class ImpressaoComponent implements OnInit, OnDestroy {
+
   dataQuery: any;
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   reinspecao = false;
-  checked = false;
 
   fatorConv = '100';
   codBobina = '';
@@ -35,27 +33,24 @@ export class ImpressaoComponent implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+  }
 
-    console.log( 'fator:' + this.fatorConv);
+  ngOnDestroy() {
 
   }
 
-
-
   consultaImpressao() {
-    this.impService.getImpressao(
-                    this.fatorConv, this.codBobina, this.reInspec, this.produto, this.tipoProd, this.opcao)
-                    .subscribe( doc => {
-                      console.log(doc);
-                      let recieve = doc;
-                      console.log(recieve);
-                      let data = this.impService.convertXMLtoJSON(doc);
-                      data = data['Root'];
-                      data = data['ttItem'];
-                      data = data['Registro'];
-                      console.log(data);
-                      this.dataQuery = data;
-                    }, error => console.log('Request Error:', error ) );
+    this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
+    this.produto, this.tipoProd, this.opcao)
+    .subscribe( doc => {
+      let data = this.impService.convertXMLtoJSON(doc);
+      data = data['Root'];
+      data = data['ttItem'];
+      data = data['Registro'];
+      console.log(data);
+      this.dataQuery = data;
+    }, error => { console.log(error); });
+
   }
 
   // consulta() {
