@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }                  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-reimpressao',
+  selector:    'app-reimpressao',
   templateUrl: './reimpressao.component.html',
-  styleUrls: ['./reimpressao.component.scss']
+  styleUrls:   ['./reimpressao.component.scss']
 })
 export class ReimpressaoComponent implements OnInit {
 
-  selectedProd = null;
+  selectedProd     = null;
   selectedTipoProd = null;
-  dados: any;
-  isLinear = true;
-  firstFormGroup: FormGroup;
+  reinspecao       = false;
+  checked          = false;
+  isLinear         = true;
+  firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
-  reinspecao = false;
-  checked = false;
+  dados:           any;
 
   constructor( private formBuilder: FormBuilder ) { }
 
@@ -28,7 +28,5 @@ export class ReimpressaoComponent implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-
   }
-
 }

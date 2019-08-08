@@ -1,46 +1,38 @@
-%flex-center { display: flex; justify-content: center }
-%sizebox { width: 400px; height: 200px;}
-%flex-centeraround-container { 
-                    display: flex; 
-                    align-items: center;
-                    justify-content: space-around;
-                    flex-direction: column; 
-                    }
+%flex-center                 { display:         flex; 
+                               justify-content: center;}
+
+%sizebox                     { width:           400px; 
+                               height:          200px;}
+
+%flex-centeraround-container { display:         flex; 
+                               align-items:     center;
+                               justify-content: space-around;
+                               flex-direction:  column;}
 .radioContainer{
     @extend %flex-centeraround-container;
 }
 
 .radioMetrosGroup {
     margin: 15px 0;
-  }
+}
   
-  .radioMetrosBtn {
-      padding-left: 20px;
-      padding-right: 5px;
-  }
+.radioMetrosBtn {
+    padding-left:  20px;
+    padding-right: 5px;
+}
 
-  .consultaContainer {
-      @extend %flex-centeraround-container;
-  }
-
-  .consultaTitle {
-
-  }
-
-  .consultaForm {
+.consultaContainer {
     @extend %flex-centeraround-container;
-  }
+}
 
-  mat-form-field {
-      @extend %flex-centeraround-container;
-  }
+.consultaForm {
+    @extend %flex-centeraround-container;
+}
 
-  mat-select {
-      width: 200px;
-  }
+mat-form-field {
+    @extend %flex-centeraround-container;
+}
 
-  .noBtn {
-      
-  }
-
-  .okBtn {}
+mat-select {
+    width: 200px;
+}

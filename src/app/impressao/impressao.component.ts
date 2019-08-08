@@ -30,7 +30,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                private snackBar:    MatSnackBar ) { }
 
   ngOnInit() {
-    this.firstFormGroup = this.formBuilder.group({
+    this.firstFormGroup  = this.formBuilder.group({
       firstCtrl: ['', Validators.required]});
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required] });
@@ -51,18 +51,18 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                 .subscribe( doc => {
                                             if ( doc.includes('Erro') ) {
                                               this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
-                                              this.dataQuery    = doc;
-                                              this.erro         = true;
-                                              this.codBobina    = '';
+                                              this.dataQuery = doc;
+                                              this.erro      = true;
+                                              this.codBobina = '';
                                               console.log(this.dataQuery);
                                             } else {
-                                              this.erro = false;
-                                              let data  = this.impService.convertXMLtoJSON(doc);
-                                              data      = data['Root'];
-                                              data      = data['ttItem'];
-                                              data      = data['Registro'];
-                                              console.log(data);
+                                              this.erro      = false;
+                                              let data       = this.impService.convertXMLtoJSON(doc);
+                                              data           = data['Root'];
+                                              data           = data['ttItem'];
+                                              data           = data['Registro'];
                                               this.dataQuery = data;
+                                              console.log(data);
                                             }
                                 });
 }
@@ -75,7 +75,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
 
   consultaImpObservable() {
-    const customObservable = Observable.create( observer => { 
+    const customObservable = Observable.create( observer => {
                                                 const req = this.impService.getImpressao(this.fatorConv, this.codBobina,
                                                                                          this.reInspec, this.produto,
                                                                                          this.tipoProd, this.opcao);
@@ -83,12 +83,12 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
     });
 
     this.firstObsSubs = customObservable.subscribe( doc => {
-                                                    let data  = this.impService.convertXMLtoJSON(doc);
-                                                    data      = data['Root'];
-                                                    data      = data['ttItem'];
-                                                    data      = data['Registro'];
-                                                    console.log(data);
+                                                    let data       = this.impService.convertXMLtoJSON(doc);
+                                                    data           = data['Root'];
+                                                    data           = data['ttItem'];
+                                                    data           = data['Registro'];
                                                     this.dataQuery = data;
+                                                    console.log(data);
     });
 
   }

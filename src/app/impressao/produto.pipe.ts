@@ -7,12 +7,12 @@ export class ProdutoPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
     let dataOut: string;
-    if ( value === 'prodpadr' ) {
-      dataOut =  'Produto padrão';
+    if ( value  === 'prodpadr' ) {
+         dataOut =  'Produto padrão';
     } else if ( value === 'cordpar' ) {
-      dataOut = 'Cordão Paralelo Torcido';
+         dataOut = 'Cordão Paralelo Torcido';
     } else {
-      dataOut = 'Cobre Nú';
+         dataOut = 'Cobre Nú';
     }
     return dataOut;
   }

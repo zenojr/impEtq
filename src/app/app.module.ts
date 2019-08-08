@@ -1,17 +1,16 @@
-import { MaterialModule } from './material.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { MaterialModule }        from './material.module';
+import { BrowserModule }         from '@angular/platform-browser';
+import { NgModule }              from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ImpressaoComponent } from './impressao/impressao.component';
-import { ImpressaoService } from './impressao/impressao.service';
-import { PrincipalComponent } from './principal/principal.component';
-import { ReimpressaoComponent } from './reimpressao/reimpressao.component';
-import { ProdutoPipe } from './impressao/produto.pipe';
-import { ImpressorasComponent } from './impressoras/impressoras.component';
+import { HttpClientModule }      from '@angular/common/http';
+import { AppRoutingModule }      from './app-routing.module';
+import { AppComponent }          from './app.component';
+import { ImpressaoComponent }    from './impressao/impressao.component';
+import { ImpressaoService }      from './impressao/impressao.service';
+import { PrincipalComponent }    from './principal/principal.component';
+import { ReimpressaoComponent }  from './reimpressao/reimpressao.component';
+import { ProdutoPipe }           from './impressao/produto.pipe';
+import { ImpressorasComponent }  from './impressoras/impressoras.component';
 
 
 @NgModule({

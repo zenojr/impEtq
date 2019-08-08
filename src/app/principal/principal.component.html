@@ -1,34 +1,37 @@
-<div class="principalContainer">
-
-<img class="logoPrincipal" src="../../assets/img/logoCorfio2019.png" alt="">
-<div class="menu">
-    <mat-tab-group dynamicHeight animationDuration="200ms" color="accent" backgroundColor="primary">
-        <mat-tab label="Impressão"> 
+<div class = "principalContainer">
+<img class = "logoPrincipal" 
+     src = "../../assets/img/logoCorfio2019.png" 
+     alt = "">
+<div class = "menu">
+    <mat-tab-group dynamicHeight 
+                   animationDuration = "200ms" 
+                   color = "accent" 
+                   backgroundColor = "primary">
+        <mat-tab label = "Impressão"> 
             <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">done</mat-icon>
+                <mat-icon class = "example-tab-icon">done</mat-icon>
                 Impressão
             </ng-template> 
-            <div class="itens">
+            <div class = "itens">
                 <app-impressao></app-impressao>
             </div>   
-            
         </mat-tab>
-        <mat-tab > 
+        <mat-tab> 
             <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">settings_backup_restore</mat-icon>
+                <mat-icon class = "example-tab-icon">settings_backup_restore</mat-icon>
                     Reimpressão
             </ng-template>
-            <div class="itens">
+            <div class = "itens">
                 <app-reimpressao></app-reimpressao>
             </div>
             
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">local_printshop</mat-icon>
+                <mat-icon class = "example-tab-icon">local_printshop</mat-icon>
                 Impressoras 
             </ng-template>
-            <div class="itens">
+            <div class = "itens">
                 <app-impressoras></app-impressoras>
             </div>
         </mat-tab>
