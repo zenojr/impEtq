@@ -15,7 +15,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
 
-  reinspecao    = false;
+  reinspecao  = false;
   isLinear    = true;
   fatorConv   = '100';
   codBobina   = '';
@@ -31,30 +31,25 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
+      firstCtrl: ['', Validators.required]});
     this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+      secondCtrl: ['', Validators.required] });
   }
 
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() {}
 
   checkReinsp() {
     if (this.reinspecao === false) {
       this.reInspec = 'sim';
     } else {
-      this.reInspec = 'nao';
-    }
+      this.reInspec = 'nao'; }
   }
 
   consultaImpressao() {
   this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
                                 this.produto, this.tipoProd, this.opcao)
                                 .subscribe( doc => {
-                                            if ( doc.includes('Erro') ){
+                                            if ( doc.includes('Erro') ) {
                                               this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
                                               this.dataQuery    = doc;
                                               this.erro         = true;

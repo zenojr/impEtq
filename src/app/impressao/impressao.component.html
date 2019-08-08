@@ -1,89 +1,90 @@
-<div class="container">
-<div class="superior">
-<div class="tipoProduto">                
-    <form [formGroup]="firstFormGroup">
+<div class = "container">
+<div class = "superior">
+<div class = "tipoProduto">                
+    <form [formGroup] = "firstFormGroup">
     <ng-template matStepLabel>Informe o tipo de produto</ng-template>
         <mat-form-field>
             <mat-label>Tipo de produto</mat-label>
-            <mat-select matInput formControlName="firstCtrl" 
-                        required [(value)]="tipoProd">
-                <mat-option value="Cobre">      Cobre Nú        </mat-option>
-                <mat-option value="Cord">Cordão Paralelo Torcido</mat-option>
-                <mat-option value="Produto Pad">  Produto Padrão</mat-option> 
+            <mat-select matInput formControlName = "firstCtrl" 
+                                 required [(value)] = "tipoProd">
+                <mat-option value = "Cobre">      Cobre Nú        </mat-option>
+                <mat-option value = "Cord">Cordão Paralelo Torcido</mat-option>
+                <mat-option value = "Produto Pad">  Produto Padrão</mat-option> 
             </mat-select>
         </mat-form-field>
     </form>
 </div>             
-<div class="produto">
-    <form [formGroup]="secondFormGroup">
+<div class = "produto">
+    <form [formGroup] = "secondFormGroup">
         <ng-template matStepLabel>Informe o produto</ng-template>
         <mat-form-field>
             <mat-label>Produto</mat-label>
-                <mat-select matInput formControlName="secondCtrl" 
-                            required [(value)]="produto" >
-                    <mat-option value="bobininha">Bobininha </mat-option>
-                    <mat-option value="rolo">       Rolo    </mat-option>
-                </mat-select>
+            <mat-select matInput formControlName    = "secondCtrl" 
+                                 required [(value)] = "produto" >
+                <mat-option value = "bobininha">Bobininha </mat-option>
+                <mat-option value = "rolo">       Rolo    </mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
 </div>
 
-<div *ngIf="produto == 'rolo'" class="radioContainer">
-    <mat-radio-group aria-label="metros" 
-                     class="radioMetrosGroup" 
-                     [(ngModel)]="fatorConv">
-        <mat-radio-button class="radioMetrosBtn" value="100" checked>100</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="200">        200</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="300">        300</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="400">        400</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="500">        500</mat-radio-button>
-        <mat-radio-button class="radioMetrosBtn" value="600">        600</mat-radio-button>
+<div *ngIf = "produto == 'rolo'" class = "radioContainer">
+    <mat-radio-group aria-label  = "metros" 
+                     class       = "radioMetrosGroup" 
+                     [(ngModel)] = "fatorConv">
+        <mat-radio-button class = "radioMetrosBtn" value = "100" checked>100</mat-radio-button>
+        <mat-radio-button class = "radioMetrosBtn" value = "200">        200</mat-radio-button>
+        <mat-radio-button class = "radioMetrosBtn" value = "300">        300</mat-radio-button>
+        <mat-radio-button class = "radioMetrosBtn" value = "400">        400</mat-radio-button>
+        <mat-radio-button class = "radioMetrosBtn" value = "500">        500</mat-radio-button>
+        <mat-radio-button class = "radioMetrosBtn" value = "600">        600</mat-radio-button>
     </mat-radio-group> 
 </div>
 
-<div class="consultaContainer">        
-    <div class="consultaTitle">
-        <mat-checkbox (click)="checkReinsp()" 
-                      [(ngModel)]="reinspecao" >Reinspeção
-        </mat-checkbox>                      
+<div class = "consultaContainer">        
+    <div class = "consultaTitle">
+        <mat-checkbox (click)     = "checkReinsp()" 
+                      [(ngModel)] = "reinspecao">Reinspeção</mat-checkbox>
     </div>
     <div class="consultaForm">
-        <mat-form-field *ngIf="reinspecao === false">
-            <input  matInput 
-                    placeholder ="Código da bobina" 
-                    [(ngModel)] ="codBobina" 
-                    autocomplete="off"
-                    (keydown)   ="sendWithEnter($event)">
-            
+        <mat-form-field *ngIf = "reinspecao === false">
+        <input  matInput placeholder  = "Código da bobina" 
+                        [(ngModel)]   = "codBobina" 
+                        autocomplete  = "off"
+                        (keydown)     = "sendWithEnter($event)">
         </mat-form-field>
-        <mat-form-field *ngIf="reinspecao === true">
-            <input  matInput placeholder="Código da RNC" 
-                    value="" 
-                    autocomplete="off">
+        <mat-form-field *ngIf         ="reinspecao === true">
+        <input  matInput placeholder  = "Código da RNC" 
+                         value        = "" 
+                         autocomplete = "off">
 
         </mat-form-field>
-        <button (click)="consultaImpObservable()" 
-                *ngIf="tipoProd != '' && produto != ''" 
-                mat-raised-button color="primary">Verifica Produto
-        </button>
+        <button mat-raised-button color = "primary"
+                (click)                 = "consultaImpObservable()" 
+                *ngIf                   = "tipoProd != '' && produto != ''">
+                Verifica Produto</button>
     </div>
 </div>
 </div>
-<div class="imprimir" 
-     *ngIf="dataQuery != null && !erro">
+<div class = "imprimir" 
+     *ngIf = "dataQuery != null && !erro">
     <ul>
         <li> {{ dataQuery.itCodigo }}  {{ dataQuery.descItem }} {{ dataQuery.codRie }} </li>
     </ul>
-    <form class="imprimirForm" 
-          *ngIf="!erro"> 
+    <form class = "imprimirForm" 
+          *ngIf = "!erro"> 
         <mat-form-field>
-            <input matInput placeholder="Máquina" autocomplete="off">
+            <input matInput placeholder  = "Máquina" 
+                            autocomplete = "off">
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Qtd Etiqueta" autocomplete="off">
+            <input matInput 
+                   placeholder  = "Qtd Etiqueta" 
+                   autocomplete = "off">
         </mat-form-field>
     </form>
-    <button mat-raised-button color="warn">Imprimir</button>
+    <button mat-raised-button 
+            color = "warn">Imprimir</button>
 </div>
 <!-- <div>
     <ul>
