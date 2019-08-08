@@ -53,14 +53,14 @@
                         autocomplete  = "off"
                         (keydown)     = "sendWithEnter($event)">
         </mat-form-field>
-        <mat-form-field *ngIf         ="reinspecao === true">
+        <mat-form-field *ngIf         = "reinspecao === true">
         <input  matInput placeholder  = "Código da RNC" 
                          value        = "" 
                          autocomplete = "off">
 
         </mat-form-field>
         <button mat-raised-button color = "primary"
-                (click)                 = "consultaImpObservable()" 
+                (click)                 = "consultaImpressao() " 
                 *ngIf                   = "tipoProd != '' && produto != ''">
                 Verifica Produto</button>
     </div>
@@ -84,9 +84,10 @@
         </mat-form-field>
     </form>
     <button mat-raised-button 
-            color = "warn">Imprimir</button>
+            color   = "warn"
+            (click) = "printEtq()">Imprimir</button>
 </div>
-<!-- <div>
+<!--<div>
     <ul>
         <li>fatorConv:  {{ fatorConv }}</li>
         <li>tipoProd:   {{ tipoProd  }}</li> 
@@ -94,5 +95,5 @@
         <li>codBobina:  {{ codBobina }}</li>
         <li>reInspec:   {{ reInspec  }}</li>
     </ul>
-</div> -->
+</div>-->
 </div>

@@ -25,18 +25,46 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   opcao       = 'Impressao';
   erro        = false;
 
+  Quant      = 0;
+  itCodigo   = '000';
+  Impressora = 'LPT1';
+  Maquina    = '0';
+  Metros     = '0';
+  codRie     = 0;
+  fase       = 1;
+  Empresa    = 'Corfio';
+  Projeto    = 'Angular';
+
   constructor( public  impService:  ImpressaoService,
                private formBuilder: FormBuilder,
                private snackBar:    MatSnackBar ) { }
 
   ngOnInit() {
-    this.firstFormGroup  = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]});
-    this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required] });
+
+    this.firstFormGroup  = this.formBuilder.group({firstCtrl:
+                                                  ['', Validators.required]});
+    this.secondFormGroup = this.formBuilder.group({ secondCtrl:
+                                                  ['', Validators.required] });
   }
 
   ngOnDestroy() {}
+
+  printEtq()  {
+    this.impService.sendImp( this.Quant,
+                             this.itCodigo,
+                             this.Impressora,
+                             this.Maquina,
+                             this.Metros,
+                             this.codRie,
+                             this.codBobina,
+                             this.fase,
+                             this.Empresa,
+                             this.Projeto)
+                             .subscribe( res => {
+                              console.log(res);
+                              this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
+                             });
+  }
 
   checkReinsp() {
     if (this.reinspecao === false) {
@@ -46,25 +74,29 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   }
 
   consultaImpressao() {
-  this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
-                                this.produto, this.tipoProd, this.opcao)
-                                .subscribe( doc => {
-                                            if ( doc.includes('Erro') ) {
-                                              this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
-                                              this.dataQuery = doc;
-                                              this.erro      = true;
-                                              this.codBobina = '';
-                                              console.log(this.dataQuery);
-                                            } else {
-                                              this.erro      = false;
-                                              let data       = this.impService.convertXMLtoJSON(doc);
-                                              data           = data['Root'];
-                                              data           = data['ttItem'];
-                                              data           = data['Registro'];
-                                              this.dataQuery = data;
-                                              console.log(data);
-                                            }
-                                });
+    this.impService.getImpressao( this.fatorConv,
+                                  this.codBobina,
+                                  this.reInspec,
+                                  this.produto,
+                                  this.tipoProd,
+                                  this.opcao)
+                                  .subscribe( doc => {
+                                    if ( doc.includes('Erro') ) {
+                                      this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
+                                      this.dataQuery = doc;
+                                      this.erro      = true;
+                                      this.codBobina = '';
+                                      console.log(this.dataQuery);
+                                    } else {
+                                      this.erro      = false;
+                                      let data       = this.impService.convertXMLtoJSON(doc);
+                                      data           = data['Root'];
+                                      data           = data['ttItem'];
+                                      data           = data['Registro'];
+                                      this.dataQuery = data;
+                                      console.log(data);
+                                    }
+                                  });
 }
 
   sendWithEnter(event) {
@@ -73,7 +105,6 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
     }
   }
 
-
   consultaImpObservable() {
     const customObservable = Observable.create( observer => {
                                                 const req = this.impService.getImpressao(this.fatorConv, this.codBobina,
@@ -81,14 +112,11 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                                                                          this.tipoProd, this.opcao);
                                                 observer.next(req);
     });
-
     this.firstObsSubs = customObservable.subscribe( doc => {
-                                                    let data       = this.impService.convertXMLtoJSON(doc);
-                                                    data           = data['Root'];
-                                                    data           = data['ttItem'];
-                                                    data           = data['Registro'];
-                                                    this.dataQuery = data;
-                                                    console.log(data);
+                                                    // let data       = this.impService.convertXMLtoJSON(doc);
+                                                    
+                                                    
+                                                    console.log(doc);
     });
 
   }
