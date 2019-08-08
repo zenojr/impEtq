@@ -1,4 +1,4 @@
-{
+{ 
   "extends": "tslint:recommended",
   "rules": {
     "array-type": false,
@@ -9,6 +9,10 @@
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
+    "disable-next-line":[
+      false,
+      "import-spacing"
+    ],
     "directive-selector": [
       true,
       "attribute",

@@ -1,11 +1,8 @@
-%flex-center { display: flex; justify-content: center }
-%sizebox { width: 400px; height: 200px;}
-%flex-centeraround-container { 
-                    display: flex; 
-                    align-items: center;
-                    justify-content: space-around;
-                    flex-direction: column; 
-                    }
+%flex-center                 { display: flex;  justify-content: center;}
+%sizebox                     { width:   400px; height:          200px; }
+%flex-centeraround-container { display: flex; align-items: center;
+                               justify-content: space-around; flex-direction: column;}
+
 .radioContainer{
     @extend %flex-centeraround-container;
 }
@@ -24,7 +21,7 @@
 }
 
 .consultaForm {
-@extend %flex-centeraround-container;
+    @extend %flex-centeraround-container;
 }
 
 .imprimir {

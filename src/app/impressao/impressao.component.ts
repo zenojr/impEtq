@@ -1,20 +1,21 @@
-import { ImpressaoService } from './impressao.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ImpressaoService }                   from './impressao.service';
+import { Component, OnInit, OnDestroy }       from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription, Observable } from 'rxjs';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { Subscription, Observable }           from 'rxjs';
+import {MatSnackBar}                          from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-impressao',
+  selector:    'app-impressao',
   templateUrl: './impressao.component.html',
-  styleUrls: ['./impressao.component.scss']
+  styleUrls:   ['./impressao.component.scss']
 })
 export class ImpressaoComponent implements OnInit, OnDestroy {
-  firstObsSubs: Subscription;
-  dataQuery: any;
-  firstFormGroup: FormGroup;
+  firstObsSubs:    Subscription;
+  dataQuery:       any;
+  firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
-  reinspecao  = false;
+
+  reinspecao    = false;
   isLinear    = true;
   fatorConv   = '100';
   codBobina   = '';
@@ -24,12 +25,11 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   opcao       = 'Impressao';
   erro        = false;
 
-  constructor( public  impService: ImpressaoService,
+  constructor( public  impService:  ImpressaoService,
                private formBuilder: FormBuilder,
-               private snackBar: MatSnackBar ) { }
+               private snackBar:    MatSnackBar ) { }
 
   ngOnInit() {
-    // this.consulta();
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -52,27 +52,25 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   consultaImpressao() {
   this.impService.getImpressao( this.fatorConv, this.codBobina, this.reInspec,
-  this.produto, this.tipoProd, this.opcao)
-  .subscribe( doc => {
-    console.log(doc);
-    if ( doc.includes('Erro') ) {
-      this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 15000 });
-      this.dataQuery    = doc;
-      this.erro         = true;
-      this.codBobina    = '';
-      console.log(this.dataQuery);
-    } else {
-      this.erro = false;
-      let data  = this.impService.convertXMLtoJSON(doc);
-      data      = data['Root'];
-      data      = data['ttItem'];
-      data      = data['Registro'];
-      console.log(data);
-      this.dataQuery = data;
-    }
-    });
-
-  }
+                                this.produto, this.tipoProd, this.opcao)
+                                .subscribe( doc => {
+                                            if ( doc.includes('Erro') ){
+                                              this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
+                                              this.dataQuery    = doc;
+                                              this.erro         = true;
+                                              this.codBobina    = '';
+                                              console.log(this.dataQuery);
+                                            } else {
+                                              this.erro = false;
+                                              let data  = this.impService.convertXMLtoJSON(doc);
+                                              data      = data['Root'];
+                                              data      = data['ttItem'];
+                                              data      = data['Registro'];
+                                              console.log(data);
+                                              this.dataQuery = data;
+                                            }
+                                });
+}
 
   sendWithEnter(event) {
     if ( event.key === 'Enter' ) {
@@ -82,33 +80,22 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
 
   consultaImpObservable() {
-    const customObservable = Observable.create( observer => {
-      const req = this.impService.getImpressao( this.fatorConv, this.codBobina,
-      this.reInspec, this.produto, this.tipoProd, this.opcao);
-      observer.next(req);
+    const customObservable = Observable.create( observer => { 
+                                                const req = this.impService.getImpressao(this.fatorConv, this.codBobina,
+                                                                                         this.reInspec, this.produto,
+                                                                                         this.tipoProd, this.opcao);
+                                                observer.next(req);
     });
 
     this.firstObsSubs = customObservable.subscribe( doc => {
-      let data  = this.impService.convertXMLtoJSON(doc);
-      data      = data['Root'];
-      data      = data['ttItem'];
-      data      = data['Registro'];
-      console.log(data);
+                                                    let data  = this.impService.convertXMLtoJSON(doc);
+                                                    data      = data['Root'];
+                                                    data      = data['ttItem'];
+                                                    data      = data['Registro'];
+                                                    console.log(data);
+                                                    this.dataQuery = data;
     });
-    this.firstObsSubs.unsubscribe();
+
   }
-
-
-
-  // consulta() {
-  //   this.impService.getData().subscribe( doc => {
-  //     let data = this.impService.convertXMLtoJSON(doc);
-  //     data = data['Root'];
-  //     data = data['ttItem'];
-  //     data = data['Registro'];
-  //     console.log(data);
-  //     this.dados = data;
-  //   });
-  // }
 
 }
