@@ -9,6 +9,10 @@
                                justify-content: space-around;
                                flex-direction:  column;}
 
+.tipoProduto{
+    margin-top: 5px;
+}                               
+                               
 .radioContainer{
     @extend %flex-centeraround-container;
 }

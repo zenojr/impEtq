@@ -7,9 +7,10 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class ImpressaoService {
 
-  urlImpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq001V2ws.p';
-  paramImpr    = '?fatorConv=100m&codBobina=b201&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
+  urlImpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq001V2ws.p';
   urlEtiquetas = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq002V2ws.p?';
+
+  paramImpr    = '?fatorConv=100m&codBobina=b201&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
 
   constructor( private http:     HttpClient,
                private xml2Json: NgxXml2jsonService ) { }

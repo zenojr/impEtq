@@ -1,50 +1,51 @@
 
 <div class = "container">
-    <div class = "superior">
-        <div class = "tipoProduto">
-            <form [formGroup] = "firstFormGroup">
-                <mat-form-field>
-                    <mat-label>Produto</mat-label>
-                    <mat-select matInput 
-                                formControlName = "firstCtrl" 
-                                required 
-                                [(value)] = "selectedProd">
-                        <mat-option value = "bobininha">Bobininha</mat-option>
-                        <mat-option value = "retalho">Retalho</mat-option>
-                        <mat-option value = "rolo">Rolo</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div *ngIf = "selectedProd == 'rolo'" 
-                    class = "radioContainer">
-                    <mat-radio-group aria-label = "metros" 
-                                    class = "radioMetrosGroup">
-                        <mat-radio-button class = "radioMetrosBtn" 
-                                        value = "100" 
-                                        checked>100</mat-radio-button>
-                        <mat-radio-button class = "radioMetrosBtn" 
-                                        value = "200">200</mat-radio-button>
-                        <mat-radio-button class = "radioMetrosBtn" 
-                                        value = "300">300</mat-radio-button>
-                        <mat-radio-button class = "radioMetrosBtn" 
-                                        value = "400">400</mat-radio-button>
-                        <mat-radio-button class = "radioMetrosBtn" 
-                                        value = "500">500</mat-radio-button>
-                        <mat-radio-button class = "radioMetrosBtn" 
-                                        value = "600">600</mat-radio-button>
-                    </mat-radio-group>   
-                </div>
-            </form>
+<div class = "superior">
+<div class = "tipoProduto">
+    <form [formGroup] = "firstFormGroup">
+        <mat-form-field>
+            <mat-label>Produto</mat-label>
+            <mat-select matInput 
+                        formControlName = "firstCtrl" 
+                        required 
+                        [(value)] = "selectedProd">
+                <mat-option value = "bobininha">Bobininha</mat-option>
+                <mat-option value = "retalho">Retalho</mat-option>
+                <mat-option value = "rolo">Rolo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf = "selectedProd == 'rolo'" 
+            class = "radioContainer">
+            <mat-radio-group aria-label = "metros" 
+                            class = "radioMetrosGroup">
+                <mat-radio-button class = "radioMetrosBtn" 
+                                value = "100" 
+                                checked>100</mat-radio-button>
+                <mat-radio-button class = "radioMetrosBtn" 
+                                value = "200">200</mat-radio-button>
+                <mat-radio-button class = "radioMetrosBtn" 
+                                value = "300">300</mat-radio-button>
+                <mat-radio-button class = "radioMetrosBtn" 
+                                value = "400">400</mat-radio-button>
+                <mat-radio-button class = "radioMetrosBtn" 
+                                value = "500">500</mat-radio-button>
+                <mat-radio-button class = "radioMetrosBtn" 
+                                value = "600">600</mat-radio-button>
+            </mat-radio-group>   
         </div>
-    <div class = "consultaContainer">
-        <div class = "consultaForm">
-            <mat-form-field >
-                <input  matInput 
-                        placeholder = "Código do Lote" 
-                        value = "">
-            </mat-form-field>
-            
-            <button mat-raised-button 
-                    color = "primary">Verifica Produto Bobina</button>
-        </div>
+    </form>
+</div>
+<div class = "consultaContainer">
+    <div class = "consultaForm">
+        <mat-form-field >
+            <input  matInput 
+                    placeholder = "Código do Lote" 
+                    value = "">
+        </mat-form-field>
+        
+        <button mat-raised-button 
+                color = "primary">Verifica Produto Bobina</button>
     </div>
+</div>
+</div>
 </div>

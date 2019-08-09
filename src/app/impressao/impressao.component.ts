@@ -26,10 +26,10 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   erro        = false;
 
   Quant      = 0;
-  itCodigo   = '000';
+  itCodigo   = '';
   Impressora = 'LPT1';
-  Maquina    = '0';
-  Metros     = '0';
+  Maquina    = '';
+  Metros     = '';
   codRie     = 0;
   fase       = 1;
   Empresa    = 'Corfio';
@@ -49,28 +49,35 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  printEtq()  {
-    this.impService.sendImp( this.Quant,
-                             this.itCodigo,
-                             this.Impressora,
-                             this.Maquina,
-                             this.Metros,
-                             this.codRie,
-                             this.codBobina,
-                             this.fase,
-                             this.Empresa,
-                             this.Projeto)
-                             .subscribe( res => {
-                              console.log(res);
-                              this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
-                             });
+  printEtq()  { this.impService.sendImp(this.Quant,
+                                        this.itCodigo,
+                                        this.Impressora,
+                                        this.Maquina,
+                                        this.Metros,
+                                        this.codRie,
+                                        this.codBobina,
+                                        this.fase,
+                                        this.Empresa,
+                                        this.Projeto)
+                                        .subscribe( res => {
+                                          console.log(res);
+                                          this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
+                                        });
   }
 
-  checkReinsp() {
-    if (this.reinspecao === false) {
-      this.reInspec = 'sim';
-    } else {
-      this.reInspec = 'nao'; }
+  checkReinsp() { if (this.reinspecao === false) {
+                      this.reInspec  = 'sim';
+                      this.itCodigo  = '';
+                      this.codRie    = 0;
+                      this.codBobina = '';
+                      this.dataQuery = null;
+                    } else {
+                      this.reInspec = 'nao';
+                      this.itCodigo  = '';
+                      this.codRie    = 0;
+                      this.codBobina = '';
+                      this.dataQuery = null;
+                    }
   }
 
   consultaImpressao() {
@@ -85,7 +92,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                       this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
                                       this.dataQuery = doc;
                                       this.erro      = true;
-                                      this.codBobina = '';
+                                      // this.codBobina = '';
                                       console.log(this.dataQuery);
                                     } else {
                                       this.erro      = false;
@@ -94,6 +101,9 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                       data           = data['ttItem'];
                                       data           = data['Registro'];
                                       this.dataQuery = data;
+                                      this.itCodigo  = data['itCodigo'];
+                                      this.codRie    = data['codRie'];
+                                      console.log(this.itCodigo);
                                       console.log(data);
                                     }
                                   });
