@@ -17,6 +17,14 @@ export class ReimpressaoService {
   getDataTest() { return this.http.get( this.urlBase + this.paramTest,
     { responseType: 'text' }); }
 
+
+  convertXMLtoJSON(doc) { const dataRec = doc.toString();
+                          const parser  = new DOMParser();
+                          const xml     = parser.parseFromString( dataRec, 'text/xml' );
+                          const obj     =  this.xml2Json.xmlToJson(xml);
+                          return obj;
+  }
+
 }
 
 

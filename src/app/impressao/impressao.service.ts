@@ -36,5 +36,6 @@ export class ImpressaoService {
                           const parser  = new DOMParser();
                           const xml     = parser.parseFromString( dataRec, 'text/xml' );
                           const obj     =  this.xml2Json.xmlToJson(xml);
-                          return obj; }
+                          return obj; 
+  }
   }

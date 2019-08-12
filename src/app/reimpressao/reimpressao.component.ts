@@ -4,8 +4,6 @@ import { Component, OnInit }                  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar }                        from '@angular/material/snack-bar';
 
-
-
 @Component({
   selector:    'app-reimpressao',
   templateUrl: './reimpressao.component.html',
@@ -15,6 +13,15 @@ export class ReimpressaoComponent implements OnInit {
 
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
+  dataQueryReimp:  any;
+
+  reInspec  = 'nao';
+  fatorConv = '100m';
+  codBobina = '';
+  seq       = '';
+  produto   = '';
+  tipoProd  = '';
+  opcao     = '';
 
 
   constructor( private formBuilder:        FormBuilder,
@@ -23,7 +30,6 @@ export class ReimpressaoComponent implements OnInit {
 
   ngOnInit() {
 
-    this.consultaReimpressao();
 
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -34,8 +40,16 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   consultaReimpressao() {
-    this.reimpressaoService.getDataTest().subscribe( doc => console.log(doc) );
+    console.log('Consulta reimp');
+    this.reimpressaoService.getDataTest()
+                           .subscribe( doc => {
+                             let data            = this.reimpressaoService.convertXMLtoJSON(doc);
+                             data                = data['Root'];
+                             data                = data['ttItem'];
+                             data                = data['Registro'];
+                             this.dataQueryReimp = data;
+                             console.log(data);
+                           });
   }
-
 
 }
