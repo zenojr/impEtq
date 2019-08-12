@@ -41,7 +41,8 @@
                 <input  matInput 
                         placeholder = "Código do Lote" 
                         [(ngModel)] = "codBobina"
-                        name        = "codBobina">
+                        name        = "codBobina"
+                        (keydown)   = "sendWithEnter($event)">
             </mat-form-field>
             
             <button mat-raised-button 

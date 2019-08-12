@@ -18,16 +18,20 @@ export class ImpressaoService {
   getDataTest() { return this.http.get( this.urlImpressao + this.paramImpr,
                                         { responseType: 'text' }); }
 
-  getImpressao( fatorConv, codBobina, reInspec, produto, tipoProd, opcao ) {
-                return  this.http.get( this.urlImpressao + '?fatorConv=' + fatorConv + '&codBobina=' + codBobina +
-                                       '&reInspec=' + reInspec + '&produto=' + produto + '&tipoProd=' + tipoProd +
-                                       '&opcao=' + opcao, { responseType: 'text' }
+  getImpressao( fatorConv, codBobina, reInspec,
+                produto,   tipoProd,  opcao ) {
+                return this.http.get( this.urlImpressao + '?fatorConv=' + fatorConv + '&codBobina=' + codBobina +
+                                                          '&reInspec=' + reInspec + '&produto=' + produto + '&tipoProd=' + tipoProd +
+                                                          '&opcao=' + opcao,
+                                           { responseType: 'text' }
                 );
   }
 
-  sendImp( Quant, itCodigo, Impressora, Maquina, Metros, codRie, codBobina, fase, Empresa, Projeto ) {
-           return this.http.get( this.urlEtiquetas + '?Quant=' + Quant + '&itCodigo=' +  itCodigo +  '&Impressora=' +
-                                 Impressora + '&Maquina=' + Maquina + '&Metros=' + Metros + '&codRie=' + codRie + '&codBobina=' +
+  sendImp( Quant, itCodigo, Impressora, Maquina, Metros,
+           codRie, codBobina, fase, Empresa, Projeto ) {
+           return this.http.get( this.urlEtiquetas + '?Quant='   + Quant   + '&itCodigo=' +  itCodigo + '&Impressora=' +
+                                        Impressora + '&Maquina=' + Maquina + '&Metros='   + Metros    + '&codRie='     + codRie +
+                                        '&codBobina=' +
                                  codBobina + '&fase=' + fase + '&Empresa=' + Empresa + '&Projeto=' + Projeto, { responseType: 'text' }
             );
   }

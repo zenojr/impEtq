@@ -14,16 +14,15 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
   dataQuery:       any;
-  reinspecao  = false;
-  isLinear    = true;
-  fatorConv   = '100';
-  codBobina   = '';
-  reInspec    = 'nao';
-  produto     = '';
-  tipoProd    = '';
-  opcao       = 'Impressao';
-  erro        = false;
-
+  reinspecao = false;
+  isLinear   = true;
+  fatorConv  = '100';
+  codBobina  = '';
+  reInspec   = 'nao';
+  produto    = '';
+  tipoProd   = '';
+  opcao      = 'Impressao';
+  erro       = false;
   Quant      = 0;
   itCodigo   = '';
   Impressora = 'LPT1';

@@ -1,5 +1,4 @@
 import { ReimpressaoService } from './reimpressao.service';
-import { ImpressaoService }                   from './../impressao/impressao.service';
 import { Component, OnInit }                  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar }                        from '@angular/material/snack-bar';
@@ -15,14 +14,24 @@ export class ReimpressaoComponent implements OnInit {
   secondFormGroup: FormGroup;
   dataQueryReimp:  any;
 
-  reInspec  = 'nao';
-  fatorConv = '100m';
-  codBobina = '';
-  seq       = '';
-  produto   = '';
-  tipoProd  = '';
-  opcao     = '';
+  reInspec   = 'nao';
+  fatorConv  = '100m';
+  codBobina  = '';
+  seq        = '14';
+  produto    = '';
+  tipoProd   = '';
+  opcao      = 'Reimpressao';
+  Empresa    = 'Corfio';
+  Projeto    = 'Angular';
 
+  itCodigo   = '';
+  Impressora = 'LPT1';
+  Maquina    = '';
+  Metros     = '';
+  codRie     = 0;
+  fase       = 1;
+
+  erro       = false;
 
   constructor( private formBuilder:        FormBuilder,
                private reimpressaoService: ReimpressaoService,
@@ -39,16 +48,39 @@ export class ReimpressaoComponent implements OnInit {
     });
   }
 
+  sendWithEnter(event) {
+    if ( event.key === 'Enter' ) {
+      this.consultaReimpressao();
+    }
+  }
+
+  
+
+
   consultaReimpressao() {
     console.log('Consulta reimp');
-    this.reimpressaoService.getDataTest()
-                           .subscribe( doc => {
-                             let data            = this.reimpressaoService.convertXMLtoJSON(doc);
-                             data                = data['Root'];
-                             data                = data['ttItem'];
-                             data                = data['Registro'];
-                             this.dataQueryReimp = data;
-                             console.log(data);
+    this.reimpressaoService.getData(this.reInspec,
+                                    this.fatorConv,
+                                    this.codBobina,
+                                    this.seq,
+                                    this.produto,
+                                    this.tipoProd,
+                                    this.opcao)
+                           .subscribe(doc => {
+                                      console.log(doc);
+                                      if (doc.includes('Erro')) {
+                                        this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
+                                        this.dataQueryReimp = doc;
+                                        this.erro           = true;
+                                        console.log(doc);
+                                      } else {
+                                        let data            = this.reimpressaoService.convertXMLtoJSON(doc);
+                                        data                = data['Root'];
+                                        data                = data['ttItem'];
+                                        data                = data['Registro'];
+                                        this.dataQueryReimp = data;
+                                        console.log(data);
+                                      }
                            });
   }
 
