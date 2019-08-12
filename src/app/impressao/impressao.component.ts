@@ -2,7 +2,7 @@ import { ImpressaoService }                   from './impressao.service';
 import { Component, OnInit, OnDestroy }       from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable }           from 'rxjs';
-import {MatSnackBar}                          from '@angular/material/snack-bar';
+import { MatSnackBar }                        from '@angular/material/snack-bar';
 
 @Component({
   selector:    'app-impressao',
@@ -11,10 +11,9 @@ import {MatSnackBar}                          from '@angular/material/snack-bar'
 })
 export class ImpressaoComponent implements OnInit, OnDestroy {
   firstObsSubs:    Subscription;
-  dataQuery:       any;
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
-
+  dataQuery:       any;
   reinspecao  = false;
   isLinear    = true;
   fatorConv   = '100';

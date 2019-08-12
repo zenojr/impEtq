@@ -1,5 +1,9 @@
+import { ReimpressaoService } from './reimpressao.service';
+import { ImpressaoService }                   from './../impressao/impressao.service';
 import { Component, OnInit }                  from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar }                        from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -9,18 +13,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ReimpressaoComponent implements OnInit {
 
-  selectedProd     = null;
-  selectedTipoProd = null;
-  reinspecao       = false;
-  checked          = false;
-  isLinear         = true;
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
-  dados:           any;
 
-  constructor( private formBuilder: FormBuilder ) { }
+
+  constructor( private formBuilder:        FormBuilder,
+               private reimpressaoService: ReimpressaoService,
+               private snackBar:           MatSnackBar) { }
 
   ngOnInit() {
+
+    this.consultaReimpressao();
 
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -29,4 +32,10 @@ export class ReimpressaoComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
+
+  consultaReimpressao() {
+    this.reimpressaoService.getDataTest().subscribe( doc => console.log(doc) );
+  }
+
+
 }
