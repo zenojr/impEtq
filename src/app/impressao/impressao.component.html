@@ -73,8 +73,7 @@
     <ul>
         <li> {{ dataQuery.itCodigo }}  {{ dataQuery.descItem }} {{ dataQuery.codRie }} </li>
     </ul>
-    <form class = "imprimirForm" 
-          *ngIf = "!erro"> 
+    <form class = "imprimirForm"> 
         <mat-form-field>
             <input matInput placeholder  = "Máquina" 
                             autocomplete = "off"
@@ -91,7 +90,8 @@
     </form>
     <button mat-raised-button 
             color   = "warn"
-            (click) = "printEtq()">Imprimir</button>
+            (click) = "printEtq()">Imprimir
+    </button>
 </div>
 <div>
     <ul>    

@@ -35,6 +35,14 @@
     @extend %flex-centeraround-container;
 }
 
+.imprimir {
+    @extend %flex-centeraround-container;
+}
+
+.imprimirForm input {
+    flex-direction: row;
+}
+
 mat-form-field {
     @extend %flex-centeraround-container;
 }

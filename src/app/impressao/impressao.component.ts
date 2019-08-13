@@ -47,17 +47,17 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  printEtq()  { this.impService.sendImp(this.Quant,
-                                        this.itCodigo,
-                                        this.Impressora,
-                                        this.Maquina,
-                                        this.Metros,
-                                        this.codRie,
-                                        this.codBobina,
-                                        this.fase,
-                                        this.Empresa,
-                                        this.Projeto)
-                                        .subscribe( res => {
+  printEtq() { this.impService.sendImp(this.Quant,
+                                       this.itCodigo,
+                                       this.Impressora,
+                                       this.Maquina,
+                                       this.Metros,
+                                       this.codRie,
+                                       this.codBobina,
+                                       this.fase,
+                                       this.Empresa,
+                                       this.Projeto)
+                                       .subscribe( res => {
                                           console.log(res);
                                           this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                                         });
@@ -88,10 +88,9 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                   this.Projeto)
                                   .subscribe( doc => {
                                     if ( doc.includes('Erro') ) {
-                                      this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
+                                      this.snackBar.open(doc, '[x]Fechar', { duration: 20000 });
                                       this.dataQuery = doc;
                                       this.erro      = true;
-                                      // this.codBobina = '';
                                       console.log(this.dataQuery);
                                     } else {
                                       this.erro      = false;

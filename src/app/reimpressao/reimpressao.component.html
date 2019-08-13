@@ -50,6 +50,31 @@
                     (click) = "consultaReimpressao()">Verifica Produto Bobina</button>
         </div>
     </div>
+    <div class="imprimir"
+         *ngIf = "dataQueryReimp != null && !erroReimp">
+            <ul>
+                <li> {{ dataQueryReimp.descItem }} </li>
+            </ul>
+        <form class = "imprimirForm"> 
+            <mat-form-field>
+                <input matInput placeholder  = "Qtd. Metros" 
+                                autocomplete = "off"
+                                [(ngModel)]  = "Metros"
+                                name         = "Metros">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder  = "Qtd. Etiquetas" 
+                                autocomplete = "off"
+                                [(ngModel)]  = "Quant"
+                                name         = "Quant">
+            </mat-form-field>
+        </form>
+        <button mat-raised-button 
+        color   = "warn"
+        (click) = "printEtq()">Imprimir
+        </button>
+    </div>
+    
     <div>
         <ul *ngIf = "dataQueryReimp != null">
             <li> itCodigo   : {{ dataQueryReimp.itCodigo   }} </li>
@@ -65,13 +90,15 @@
             <li> erro       : {{ dataQueryReimp.erro       }} </li>
         </ul>
         <ul>
+            <li> Metros   : {{ Metros    }} </li>
+            <li> Quant    : {{ Quant     }} </li>
             <li> reInspec : {{ reInspec  }} </li> 
             <li> fatorConv: {{ fatorConv }} </li> 
             <li> codBobina: {{ codBobina }} </li> 
             <li> seq      : {{ seq       }} </li> 
             <li> produto  : {{ produto   }} </li> 
             <li> tipoProd : {{ tipoProd  }} </li> 
-            <li> opcao    : {{ opcao     }} </li> 
+            <li> opcao    : {{ opcao     }} </li>
         </ul>
     </div>
 </div>

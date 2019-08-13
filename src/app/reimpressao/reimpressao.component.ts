@@ -1,7 +1,9 @@
 import { ReimpressaoService } from './reimpressao.service';
-import { Component, OnInit }                  from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar }                        from '@angular/material/snack-bar';
+import { Component, OnInit }  from '@angular/core';
+import { FormGroup,
+         FormBuilder,
+         Validators }         from '@angular/forms';
+import { MatSnackBar }        from '@angular/material/snack-bar';
 
 @Component({
   selector:    'app-reimpressao',
@@ -24,6 +26,8 @@ export class ReimpressaoComponent implements OnInit {
   Empresa    = 'Corfio';
   Projeto    = 'Angular';
 
+  erroReimp  = false;
+
   itCodigo    = '';
   Impressora  = 'LPT1';
   Maquina     = '';
@@ -34,7 +38,6 @@ export class ReimpressaoComponent implements OnInit {
   metros      = '0';
   peso        = '0';
   pesoBalanca = 'no';
-  erro        = false;
   Quant       = 0;
   PesoBal     = '0.000';
 
@@ -63,7 +66,6 @@ export class ReimpressaoComponent implements OnInit {
 
 
   consultaReimpressao() {
-    console.log('Consulta reimp');
     this.reimpressaoService.getData(this.reInspec,
                                     this.fatorConv,
                                     this.codBobina,
@@ -74,11 +76,12 @@ export class ReimpressaoComponent implements OnInit {
                                     this.Projeto)
                            .subscribe(doc => {
                                       if (doc.includes('Erro')) {
-                                        this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
+                                        this.snackBar.open( doc, '[x]Fechar', { duration: 20000 });
                                         this.dataQueryReimp = doc;
-                                        this.erro           = true;
+                                        this.erroReimp      = true;
                                         console.log(doc);
                                       } else {
+                                        this.erroReimp      = false;
                                         let data            = this.reimpressaoService.convertXMLtoJSON(doc);
                                         data                = data['Root'];
                                         data                = data['ttItem'];
