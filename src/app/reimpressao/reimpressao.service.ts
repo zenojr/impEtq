@@ -15,10 +15,10 @@ export class ReimpressaoService {
 
 
   getData( reInspec, fatorConv, codBobina,
-           seq, produto, tipoProd, opcao) { return this.http.get(this.urlBase + 'reInspec=' + reInspec +
+           seq, produto, tipoProd, opcao, Projeto) { return this.http.get(this.urlBase + 'reInspec=' + reInspec +
                                                                 '&fatorConv=' + fatorConv + '&codBobina=' + codBobina +
                                                                 '&seq=' + seq + '&produto=' + produto +
-                                                                '&tipoProd=' + tipoProd + '&opcao=' + opcao,
+                                                                '&tipoProd=' + tipoProd + '&opcao=' + opcao + '&Projeto=' + Projeto,
                                               { responseType: 'text' }); }
 
 

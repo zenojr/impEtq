@@ -24,14 +24,19 @@ export class ReimpressaoComponent implements OnInit {
   Empresa    = 'Corfio';
   Projeto    = 'Angular';
 
-  itCodigo   = '';
-  Impressora = 'LPT1';
-  Maquina    = '';
-  Metros     = '';
-  codRie     = 0;
-  fase       = 1;
-
-  erro       = false;
+  itCodigo    = '';
+  Impressora  = 'LPT1';
+  Maquina     = '';
+  Metros      = '';
+  codRie      = 0;
+  fase        = 1;
+  descItem    = '';
+  metros      = '0';
+  peso        = '0';
+  pesoBalanca = 'no';
+  erro        = false;
+  Quant       = 0;
+  PesoBal     = '0.000';
 
   constructor( private formBuilder:        FormBuilder,
                private reimpressaoService: ReimpressaoService,
@@ -65,9 +70,9 @@ export class ReimpressaoComponent implements OnInit {
                                     this.seq,
                                     this.produto,
                                     this.tipoProd,
-                                    this.opcao)
+                                    this.opcao,
+                                    this.Projeto)
                            .subscribe(doc => {
-                                      console.log(doc);
                                       if (doc.includes('Erro')) {
                                         this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
                                         this.dataQueryReimp = doc;
@@ -79,7 +84,7 @@ export class ReimpressaoComponent implements OnInit {
                                         data                = data['ttItem'];
                                         data                = data['Registro'];
                                         this.dataQueryReimp = data;
-                                        console.log(data);
+                                        console.log( data);
                                       }
                            });
   }

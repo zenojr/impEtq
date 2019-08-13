@@ -19,10 +19,10 @@ export class ImpressaoService {
                                         { responseType: 'text' }); }
 
   getImpressao( fatorConv, codBobina, reInspec,
-                produto,   tipoProd,  opcao ) {
+                produto,   tipoProd,  opcao, Projeto ) {
                 return this.http.get( this.urlImpressao + '?fatorConv=' + fatorConv + '&codBobina=' + codBobina +
                                                           '&reInspec=' + reInspec + '&produto=' + produto + '&tipoProd=' + tipoProd +
-                                                          '&opcao=' + opcao,
+                                                          '&opcao=' + opcao + '&Projeto=' + Projeto,
                                            { responseType: 'text' }
                 );
   }

@@ -84,7 +84,8 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                   this.reInspec,
                                   this.produto,
                                   this.tipoProd,
-                                  this.opcao)
+                                  this.opcao,
+                                  this.Projeto)
                                   .subscribe( doc => {
                                     if ( doc.includes('Erro') ) {
                                       this.snackBar.open('Erro: ' + doc, '[x]Fechar', { duration: 20000 });
@@ -117,7 +118,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
     const customObservable = Observable.create( observer => {
                                                 const req = this.impService.getImpressao(this.fatorConv, this.codBobina,
                                                                                          this.reInspec, this.produto,
-                                                                                         this.tipoProd, this.opcao);
+                                                                                         this.tipoProd, this.opcao, this.Projeto);
                                                 observer.next(req);
     });
     this.firstObsSubs = customObservable.subscribe( doc => {
