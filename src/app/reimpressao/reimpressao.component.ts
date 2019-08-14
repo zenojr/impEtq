@@ -79,6 +79,14 @@ export class ReimpressaoComponent implements OnInit {
                                                   this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                                                 }); }
 
+  consultaPesoBalanca(pesobalanca) {
+    if (pesobalanca === 'yes') {
+      alert('call other program');
+    } else {
+      console.log(pesobalanca);
+    }
+  }
+
   consultaReimpressao() {
     this.reimpressaoService.getData(this.reInspec,
                                     this.fatorConv,
@@ -102,6 +110,7 @@ export class ReimpressaoComponent implements OnInit {
                                         data                = data['Registro'];
                                         this.dataQueryReimp = data;
                                         this.pesoBalanca    = data['pesoBalanca'];
+                                        this.consultaPesoBalanca( this.pesoBalanca );
                                         console.log( data);
                                       }
                            }); }

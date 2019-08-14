@@ -1,5 +1,6 @@
 %flex-center                 { display:         flex; 
-                               justify-content: center;}
+                               justify-content: center;
+                               align-items:     center}
 
 %sizebox                     { width:           400px; 
                                height:          200px;}
@@ -8,6 +9,10 @@
                                align-items:     center;
                                justify-content: space-around;
                                flex-direction:  column;}
+
+.balanca {
+    @extend %flex-center;
+}                               
 
 .tipoProduto{
     margin-top: 5px;
