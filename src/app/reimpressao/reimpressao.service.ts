@@ -7,25 +7,20 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class ReimpressaoService {
 
-  urlConsulta   = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq001V2ws.p?';
-  paramTest = 'codBobina=419072409&fatorConv=100m&opcao=Reimpressao&produto=Rolo&reInspec=nao&seq=1&tipoProd=%5Bobject%20Object%5D';
-
+  urlConsulta    = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq001V2ws.p?';
   urlReimpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq002V2ws.p?';
-  // Quant=data
-  // &itCodigo=1055E%2DPT
-  // &Impressora=LPT1
-  // &Maquina=0
-  // &Metros=data
-  // &codRie=0
-  // &codBobina=369081205
-  // &seq=5
-  // &PesoBal=0%2E000
-  // &fase=9
-  // &Empresa=Corfio
+  urlPesoBalanca = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq004ws.p?';
 
 
   constructor( private http:     HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
+
+  getPesoBalanca(itCodigo,
+                 seq,
+                 Empresa) {return this.http.get(this.urlPesoBalanca + 'itCodigo=' + itCodigo +
+                                                                      '&seq='     + seq      +
+                                                                      '&Empresa=' + Empresa,
+                                                                      {responseType: 'text'}); }
 
   sendReimp(Quant,
             itCodigo,
@@ -50,7 +45,7 @@ export class ReimpressaoService {
                                                                  '&fase='       + fase       +
                                                                  '&Empresa='    + Empresa    +
                                                                  '&Projeto='    + Projeto,
-                       { responseType: 'text' }); }
+                                                                 {responseType: 'text'}); }
 
   getData(reInspec,
           fatorConv,
@@ -67,7 +62,7 @@ export class ReimpressaoService {
                                                              '&tipoProd='  + tipoProd  +
                                                              '&opcao='     + opcao     +
                                                              '&Projeto='   + Projeto,
-                                          { responseType: 'text' }); }
+                                                             {responseType: 'text'}); }
 
 
   convertXMLtoJSON(doc) { const dataRec = doc.toString();

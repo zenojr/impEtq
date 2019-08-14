@@ -101,9 +101,9 @@ export class ReimpressaoComponent implements OnInit {
                                         data                = data['ttItem'];
                                         data                = data['Registro'];
                                         this.dataQueryReimp = data;
+                                        this.pesoBalanca    = data['pesoBalanca'];
                                         console.log( data);
                                       }
-                           });
-  }
+                           }); }
 
 }
