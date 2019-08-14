@@ -60,8 +60,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                        .subscribe( res => {
                                           console.log(res);
                                           this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
-                                        });
-  }
+                                        }); }
 
   checkReinsp() { if (this.reinspecao === false) {
                       this.reInspec  = 'sim';

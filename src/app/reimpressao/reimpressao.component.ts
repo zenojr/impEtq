@@ -62,8 +62,22 @@ export class ReimpressaoComponent implements OnInit {
     }
   }
 
-  
-
+  reprintEtq() {this.reimpressaoService.sendReimp(this.Quant,
+                                                this.itCodigo,
+                                                this.Impressora,
+                                                this.Maquina,
+                                                this.Metros,
+                                                this.codRie,
+                                                this.codBobina,
+                                                this.seq,
+                                                this.PesoBal,
+                                                this.fase,
+                                                this.Empresa,
+                                                this.Projeto)
+                                                .subscribe( res => {
+                                                  console.log(res);
+                                                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
+                                                }); }
 
   consultaReimpressao() {
     this.reimpressaoService.getData(this.reInspec,
