@@ -17,7 +17,7 @@ export class ReimpressaoComponent implements OnInit {
   dataQueryReimp:  any;
 
   reInspec   = 'nao';
-  fatorConv  = '100m';
+  fatorConv  = '200';
   codBobina  = '';
   seq        = '14';
   produto    = '';
@@ -94,7 +94,7 @@ export class ReimpressaoComponent implements OnInit {
                                                 data        = data['Registro'];
                                                 this.Metros = data['metros'];
                                                 this.peso   = data['peso'];
-                                               console.log(data);
+                                                console.log(data);
                                               });
     } else {
       console.log(pesobalanca);
