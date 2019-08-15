@@ -1,5 +1,5 @@
-import { Injectable }         from '@angular/core';
-import { HttpClient }         from '@angular/common/http';
+import { Injectable         } from '@angular/core';
+import { HttpClient         } from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ImpressaoService {
 
   paramImpr    = '?fatorConv=100m&codBobina=b201&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
 
-  constructor( private http:     HttpClient,
+  constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
 
   getDataTest() { return this.http.get( this.urlImpressao + this.paramImpr,

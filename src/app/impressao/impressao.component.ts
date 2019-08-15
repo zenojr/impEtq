@@ -1,8 +1,8 @@
-import { ImpressaoService }                   from './impressao.service';
-import { Component, OnInit, OnDestroy }       from '@angular/core';
+import { ImpressaoService                   } from './impressao.service';
+import { Component, OnInit, OnDestroy       } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription, Observable }           from 'rxjs';
-import { MatSnackBar }                        from '@angular/material/snack-bar';
+import { Subscription, Observable           } from 'rxjs';
+import { MatSnackBar                        } from '@angular/material/snack-bar';
 
 @Component({
   selector:    'app-impressao',
@@ -10,28 +10,28 @@ import { MatSnackBar }                        from '@angular/material/snack-bar'
   styleUrls:   ['./impressao.component.scss']
 })
 export class ImpressaoComponent implements OnInit, OnDestroy {
-  firstObsSubs:    Subscription;
-  firstFormGroup:  FormGroup;
+     firstObsSubs: Subscription;
+   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  dataQuery:       any;
-  reinspecao = false;
-  isLinear   = true;
-  fatorConv  = '100';
-  codBobina  = '';
-  reInspec   = 'nao';
-  produto    = '';
-  tipoProd   = '';
-  opcao      = 'Impressao';
-  erro       = false;
-  Quant      = 0;
-  itCodigo   = '';
-  Impressora = 'LPT1';
-  Maquina    = '';
-  Metros     = '';
-  codRie     = 0;
-  fase       = 1;
-  Empresa    = 'Corfio';
-  Projeto    = 'Angular';
+        dataQuery: any;
+      reinspecao = false;
+      isLinear   = true;
+      fatorConv  = '100';
+      codBobina  = '';
+      reInspec   = 'nao';
+      produto    = '';
+      tipoProd   = '';
+      opcao      = 'Impressao';
+      erro       = false;
+      Quant      = 0;
+      itCodigo   = '';
+      Impressora = 'LPT1';
+      Maquina    = '';
+      Metros     = '';
+      codRie     = 0;
+      fase       = 1;
+      Empresa    = 'Corfio';
+      Projeto    = 'Angular';
 
   constructor( public  impService:  ImpressaoService,
                private formBuilder: FormBuilder,

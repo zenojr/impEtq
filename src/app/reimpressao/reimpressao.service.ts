@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient         } from '@angular/common/http';
+import { Injectable         } from '@angular/core';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ReimpressaoService {
   urlPesoBalanca = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq004ws.p?';
 
 
-  constructor( private http:     HttpClient,
+  constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
 
   getPesoBalanca(itCodigo,

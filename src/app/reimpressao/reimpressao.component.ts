@@ -1,9 +1,9 @@
 import { ReimpressaoService } from './reimpressao.service';
-import { Component, OnInit }  from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { FormGroup,
          FormBuilder,
-         Validators }         from '@angular/forms';
-import { MatSnackBar }        from '@angular/material/snack-bar';
+         Validators         } from '@angular/forms';
+import { MatSnackBar        } from '@angular/material/snack-bar';
 
 @Component({
   selector:    'app-reimpressao',
@@ -88,13 +88,12 @@ export class ReimpressaoComponent implements OnInit {
                                              this.seq,
                                              this.Empresa)
                                              .subscribe(res => {
-                                               console.log('resposta from balanca' + res);
-                                               let data    = this.reimpressaoService.convertXMLtoJSON(res);
-                                               data        = data['Root'];
-                                               data        = data['ttItem'];
-                                               data        = data['Registro'];
-                                               this.Metros = data['metros'];
-                                               this.peso   = data['peso'];
+                                                let data    = this.reimpressaoService.convertXMLtoJSON(res);
+                                                data        = data['Root'];
+                                                data        = data['ttItem'];
+                                                data        = data['Registro'];
+                                                this.Metros = data['metros'];
+                                                this.peso   = data['peso'];
                                                console.log(data);
                                               });
     } else {
@@ -126,6 +125,7 @@ export class ReimpressaoComponent implements OnInit {
                                         this.dataQueryReimp = data;
                                         this.pesoBalanca    = data['pesoBalanca'];
                                         this.itCodigo       = data['itCodigo'];
+                                        this.blockMetros    = false;
                                         this.consultaPesoBalanca( this.pesoBalanca );
                                         console.log( data);
                                       }

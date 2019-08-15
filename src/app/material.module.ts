@@ -1,8 +1,18 @@
-import { MatFormFieldModule, MatButtonModule, MatCheckboxModule, MatInputModule, MatOptionModule,
-         MatSelectModule, MatTabsModule, MatCardModule, MatIconModule, MatRadioModule,
-         MatStepperModule, MatSnackBarModule} from '@angular/material';
-import { NgModule }                           from '@angular/core';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { MatFormFieldModule,
+         MatButtonModule,
+         MatCheckboxModule,
+         MatInputModule,
+         MatOptionModule,
+         MatSelectModule,
+         MatTabsModule,
+         MatCardModule,
+         MatIconModule,
+         MatRadioModule,
+         MatStepperModule,
+         MatSnackBarModule   } from '@angular/material';
+import { NgModule            } from '@angular/core';
+import { FormsModule,
+         ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({ imports: [MatButtonModule,
                       MatCheckboxModule,
