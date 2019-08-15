@@ -35,7 +35,7 @@ export class ReimpressaoComponent implements OnInit {
   codRie      = 0;
   fase        = 1;
   descItem    = '';
-  metros      = '0';
+  // metros      = '0';
   peso        = '0';
   pesoBalanca = 'no';
   Quant       = 0;
@@ -89,7 +89,13 @@ export class ReimpressaoComponent implements OnInit {
                                              this.Empresa)
                                              .subscribe(res => {
                                                console.log('resposta from balanca' + res);
-                                               
+                                               let data    = this.reimpressaoService.convertXMLtoJSON(res);
+                                               data        = data['Root'];
+                                               data        = data['ttItem'];
+                                               data        = data['Registro'];
+                                               this.Metros = data['metros'];
+                                               this.peso   = data['peso'];
+                                               console.log(data);
                                               });
     } else {
       console.log(pesobalanca);

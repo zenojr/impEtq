@@ -55,12 +55,13 @@
             <ul>
                 <li> {{ dataQueryReimp.descItem }} </li>
             </ul>
-        <div class="balanca">
+        <div class="balanca" *ngIf="blockMetros" >
              Peso Balança:   
             <button mat-raised-button
-                    color = "warn">
+                    color   = "warn"
+                    (click) = "consultaReimpressao()">
                 <mat-icon class = "tab-icon">autorenew</mat-icon>
-                {{ peso }}
+                {{ peso }} kg
             </button>            
         </div>            
         <form class = "imprimirForm"> 
@@ -70,7 +71,8 @@
                        autocomplete = "off"
                        [(ngModel)]  = "Metros"
                        name         = "Metros"
-                       [disabled]   = "blockMetros">
+                       [disabled]   = "blockMetros"
+                       value        = "Metros">
             </mat-form-field>
             <mat-form-field>
                 <input matInput 
@@ -92,10 +94,10 @@
             <li> Impressora : {{ dataQueryReimp.Impressora }} </li>
             <li> Maquina    : {{ dataQueryReimp.Maquina    }} </li>
             <li> Metros     : {{ dataQueryReimp.Metros     }} </li>
+            <li> metros     : {{ dataQueryReimp.metros     }} </li>
             <li> codRie     : {{ dataQueryReimp.codRie     }} </li>
             <li> fase       : {{ dataQueryReimp.fase       }} </li>
             <li> descItem   : {{ dataQueryReimp.descItem   }} </li>
-            <li> metros     : {{ dataQueryReimp.metros     }} </li>
             <li> peso       : {{ dataQueryReimp.peso       }} </li>
             <li> pesoBalanca: {{ dataQueryReimp.pesoBalanca}} </li>
             <li> erro       : {{ dataQueryReimp.erro       }} </li>
