@@ -10,9 +10,15 @@
                                justify-content: space-around;
                                flex-direction:  column;}
 
-.balanca {
+
+.balanca .pesoBalanca {
     @extend %flex-center;
-}                               
+    margin: 5px;
+}
+
+.pesoBalanca {
+    background-color:  rgba(31, 62, 44, 0.9);
+}
 
 .tipoProduto{
     margin-top: 5px;

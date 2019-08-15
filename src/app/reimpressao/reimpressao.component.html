@@ -55,27 +55,33 @@
             <ul>
                 <li> {{ dataQueryReimp.descItem }} </li>
             </ul>
-
         <div class="balanca">
-            <mat-icon class = "tab-icon">autorenew</mat-icon>
-            Peso Balança
+             Peso Balança:   
+            <button mat-raised-button
+                    color = "warn">
+                <mat-icon class = "tab-icon">autorenew</mat-icon>
+                {{ peso }}
+            </button>            
         </div>            
         <form class = "imprimirForm"> 
             <mat-form-field>
-                <input matInput placeholder  = "Qtd. Metros" 
-                                autocomplete = "off"
-                                [(ngModel)]  = "Metros"
-                                name         = "Metros">
+                <input matInput 
+                       placeholder  = "Qtd. Metros" 
+                       autocomplete = "off"
+                       [(ngModel)]  = "Metros"
+                       name         = "Metros"
+                       [disabled]   = "blockMetros">
             </mat-form-field>
             <mat-form-field>
-                <input matInput placeholder  = "Qtd. Etiquetas" 
-                                autocomplete = "off"
-                                [(ngModel)]  = "Quant"
-                                name         = "Quant">
+                <input matInput 
+                       placeholder  = "Qtd. Etiquetas" 
+                       autocomplete = "off"
+                       [(ngModel)]  = "Quant"
+                       name         = "Quant">
             </mat-form-field>
         </form>
         <button mat-raised-button 
-        color   = "warn"
+        color   = "primary"
         (click) = "reprintEtq()">Imprimir
         </button>
     </div>

@@ -40,6 +40,7 @@ export class ReimpressaoComponent implements OnInit {
   pesoBalanca = 'no';
   Quant       = 0;
   PesoBal     = '0.000';
+  blockMetros = false;
 
   constructor( private formBuilder:        FormBuilder,
                private reimpressaoService: ReimpressaoService,
@@ -63,17 +64,17 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   reprintEtq() {this.reimpressaoService.sendReimp(this.Quant,
-                                                this.itCodigo,
-                                                this.Impressora,
-                                                this.Maquina,
-                                                this.Metros,
-                                                this.codRie,
-                                                this.codBobina,
-                                                this.seq,
-                                                this.PesoBal,
-                                                this.fase,
-                                                this.Empresa,
-                                                this.Projeto)
+                                                  this.itCodigo,
+                                                  this.Impressora,
+                                                  this.Maquina,
+                                                  this.Metros,
+                                                  this.codRie,
+                                                  this.codBobina,
+                                                  this.seq,
+                                                  this.PesoBal,
+                                                  this.fase,
+                                                  this.Empresa,
+                                                  this.Projeto)
                                                 .subscribe( res => {
                                                   console.log(res);
                                                   this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
@@ -81,7 +82,15 @@ export class ReimpressaoComponent implements OnInit {
 
   consultaPesoBalanca(pesobalanca) {
     if (pesobalanca === 'yes') {
-      alert('call other program');
+      console.log( 'data send to: ' + this.itCodigo + ' ' + this.seq + ' ' + this.Empresa );
+      this.blockMetros = true;
+      this.reimpressaoService.getPesoBalanca(this.itCodigo,
+                                             this.seq,
+                                             this.Empresa)
+                                             .subscribe(res => {
+                                               console.log('resposta from balanca' + res);
+                                               
+                                              });
     } else {
       console.log(pesobalanca);
     }
@@ -110,6 +119,7 @@ export class ReimpressaoComponent implements OnInit {
                                         data                = data['Registro'];
                                         this.dataQueryReimp = data;
                                         this.pesoBalanca    = data['pesoBalanca'];
+                                        this.itCodigo       = data['itCodigo'];
                                         this.consultaPesoBalanca( this.pesoBalanca );
                                         console.log( data);
                                       }
