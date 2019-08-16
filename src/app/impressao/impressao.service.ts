@@ -7,16 +7,11 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class ImpressaoService {
 
-  urlImpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq001V2ws.p';
-  urlEtiquetas = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq002V2ws.p?';
-
-  paramImpr    = '?fatorConv=100m&codBobina=b201&reInspec=nao&produto=Rolo&tipoProd=Produto%20Padr%C3%A3o&opcao=Impressao';
+  urlImpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq001V2ws.p';
+  urlEtiquetas = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq002V2ws.p?';
 
   constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
-
-  getDataTest() { return this.http.get( this.urlImpressao + this.paramImpr,
-                                        { responseType: 'text' }); }
 
   getImpressao( fatorConv,
                 codBobina,
@@ -24,13 +19,13 @@ export class ImpressaoService {
                 produto,
                 tipoProd,
                 opcao,
-                Projeto) {return this.http.get( this.urlImpressao + '?fatorConv=' + fatorConv +
-                                                                    '&codBobina=' + codBobina +
-                                                                    '&reInspec='  + reInspec  +
-                                                                    '&produto='   + produto   +
-                                                                    '&tipoProd='  + tipoProd  +
-                                                                    '&opcao='     + opcao     +
-                                                                    '&Projeto='   + Projeto,
+                Projeto) {return this.http.get(this.urlImpressao + '?fatorConv=' + fatorConv +
+                                                                   '&codBobina=' + codBobina +
+                                                                   '&reInspec='  + reInspec  +
+                                                                   '&produto='   + produto   +
+                                                                   '&tipoProd='  + tipoProd  +
+                                                                   '&opcao='     + opcao     +
+                                                                   '&Projeto='   + Projeto,
                          { responseType: 'text' }); }
 
   sendImp(Quant,
@@ -42,16 +37,16 @@ export class ImpressaoService {
           codBobina,
           fase,
           Empresa,
-          Projeto) {return this.http.get( this.urlEtiquetas + '?Quant='      + Quant      +
-                                                              '&itCodigo='   + itCodigo   +
-                                                              '&Impressora=' + Impressora +
-                                                              '&Maquina='    + Maquina    +
-                                                              '&Metros='     + Metros     +
-                                                              '&codRie='     + codRie     +
-                                                              '&codBobina='  + codBobina  +
-                                                              '&fase='       + fase       +
-                                                              '&Empresa='    + Empresa    +
-                                                              '&Projeto='    + Projeto,
+          Projeto) {return this.http.get(this.urlEtiquetas + '?Quant='      + Quant      +
+                                                             '&itCodigo='   + itCodigo   +
+                                                             '&Impressora=' + Impressora +
+                                                             '&Maquina='    + Maquina    +
+                                                             '&Metros='     + Metros     +
+                                                             '&codRie='     + codRie     +
+                                                             '&codBobina='  + codBobina  +
+                                                             '&fase='       + fase       +
+                                                             '&Empresa='    + Empresa    +
+                                                             '&Projeto='    + Projeto,
                     { responseType: 'text' }); }
 
   convertXMLtoJSON(doc) { const dataRec = doc.toString();

@@ -1,13 +1,13 @@
-%flex-center                 { display:         flex; 
+%flex-center                 {         display: flex; 
                                justify-content: center;}
 
-%sizebox                     { width:           400px; 
-                               height:          200px;}
+%sizebox                     {           width: 400px; 
+                                        height: 200px;}
 
-%flex-centeraround-container { display:         flex; 
-                               align-items:     center;
+%flex-centeraround-container {         display: flex; 
+                                   align-items: center;
                                justify-content: space-around;
-                               flex-direction:  column;}
+                                flex-direction: column;}
 .radioContainer{
     @extend %flex-centeraround-container;
 }

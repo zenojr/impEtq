@@ -5,40 +5,39 @@ import { Subscription, Observable           } from 'rxjs';
 import { MatSnackBar                        } from '@angular/material/snack-bar';
 
 @Component({
-  selector:    'app-impressao',
+     selector: 'app-impressao',
   templateUrl: './impressao.component.html',
-  styleUrls:  ['./impressao.component.scss']
+    styleUrls: ['./impressao.component.scss']
 })
 export class ImpressaoComponent implements OnInit, OnDestroy {
      firstObsSubs: Subscription;
    firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
         dataQuery: any;
-      reinspecao = false;
-      isLinear   = true;
-      fatorConv  = '100';
-      codBobina  = '';
-      reInspec   = 'nao';
-      produto    = '';
-      tipoProd   = '';
-      opcao      = 'Impressao';
-      erro       = false;
-      Quant      = 0;
-      itCodigo   = '';
-      Impressora = 'LPT1';
-      Maquina    = '';
-      Metros     = '';
-      codRie     = 0;
-      fase       = 1;
-      Empresa    = 'Corfio';
-      Projeto    = 'Angular';
+       reinspecao = false;
+         isLinear = true;
+        fatorConv = '100';
+        codBobina = '';
+         reInspec = 'nao';
+          produto = '';
+         tipoProd = '';
+            opcao = 'Impressao';
+             erro = false;
+            Quant = 0;
+         itCodigo = '';
+       Impressora = 'LPT1';
+          Maquina = '';
+           Metros = '';
+           codRie = 0;
+             fase = 1;
+          Empresa = 'Corfio';
+          Projeto = 'Angular';
 
   constructor( public   impService: ImpressaoService,
                private formBuilder: FormBuilder,
                private    snackBar: MatSnackBar ) { }
 
   ngOnInit() {
-
     this.firstFormGroup  = this.formBuilder.group({firstCtrl:
                                                   ['', Validators.required]});
     this.secondFormGroup = this.formBuilder.group({ secondCtrl:
@@ -115,18 +114,20 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   }
 
   consultaImpObservable() {
-    const customObservable = Observable.create( observer  => {
-                                                const req = this.impService.getImpressao(this.fatorConv, this.codBobina,
-                                                                                         this.reInspec, this.produto,
-                                                                                         this.tipoProd, this.opcao, this.Projeto);
-                                                observer.next(req);
+    const customObservable = Observable.create(observer  => {
+                                               const req = this.impService.getImpressao(this.fatorConv,
+                                                                                        this.codBobina,
+                                                                                        this.reInspec,
+                                                                                        this.produto,
+                                                                                        this.tipoProd,
+                                                                                        this.opcao,
+                                                                                        this.Projeto);
+                                               observer.next(req);
     });
     this.firstObsSubs = customObservable.subscribe( doc => {
                                                     // let data       = this.impService.convertXMLtoJSON(doc);
 
                                                     console.log(doc);
     });
-
   }
-
 }

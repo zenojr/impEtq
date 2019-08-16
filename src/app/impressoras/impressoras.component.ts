@@ -1,15 +1,15 @@
-import { Component, OnInit }                  from '@angular/core';
+import {                  Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector:    'app-impressoras',
+     selector: 'app-impressoras',
   templateUrl: './impressoras.component.html',
-  styleUrls:   ['./impressoras.component.scss']
+    styleUrls: ['./impressoras.component.scss']
 })
 export class ImpressorasComponent implements OnInit {
 
-  dados:           any;
-  firstFormGroup:  FormGroup;
+            dados: any;
+   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
   selectedProd     = null;
