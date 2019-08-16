@@ -63,28 +63,35 @@
                 {{ peso }} kg
             </button>            
         </div>            
-        <form class = "imprimirForm"> 
+        <form class       = "imprimirForm"
+              [formGroup] = "sendFormGroup"> 
             <mat-form-field>
                 <input matInput 
-                       placeholder  = "Qtd. Metros" 
-                       autocomplete = "off"
-                       [(ngModel)]  = "Metros"
-                       name         = "Metros"
-                       [disabled]   = "blockMetros"
-                       value        = "Metros">
+                       placeholder     = "Qtd. Metros" 
+                       autocomplete    = "off"
+                       [(ngModel)]     = "Metros"
+                       name            = "Metros"
+                       [disabled]      = "blockMetros"
+                       type            = "number"
+                       value           = "Metros"
+                       formControlName = "metrosControl"
+                       required>
             </mat-form-field>
             <mat-form-field>
                 <input matInput 
-                       placeholder  = "Qtd. Etiquetas" 
-                       autocomplete = "off"
-                       [(ngModel)]  = "Quant"
-                       name         = "Quant">
+                       placeholder     = "Qtd. Etiquetas" 
+                       autocomplete    = "off"
+                       [(ngModel)]     = "Quant"
+                       type            = "number"
+                       formControlName = "quantControl"
+                       name            = "Quant">
             </mat-form-field>
+            <button mat-raised-button 
+                    color   = "warn"
+                    (click) = "reprintEtq()">Imprimir
+            </button>
         </form>
-        <button mat-raised-button 
-        color   = "primary"
-        (click) = "reprintEtq()">Imprimir
-        </button>
+        
     </div>
     
     <div>

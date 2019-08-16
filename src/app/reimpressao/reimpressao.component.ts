@@ -14,46 +14,48 @@ export class ReimpressaoComponent implements OnInit {
 
    firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+    sendFormGroup: FormGroup;
    dataQueryReimp: any;
+           Metros: number;
+            Quant: number;
 
-  reInspec   = 'nao';
-  fatorConv  = '200';
-  codBobina  = '';
-  seq        = '14';
-  produto    = '';
-  tipoProd   = '';
-  opcao      = 'Reimpressao';
-  Empresa    = 'Corfio';
-  Projeto    = 'Angular';
-
-  erroReimp  = false;
-
+  reInspec    = 'nao';
+  fatorConv   = '200';
+  codBobina   = '';
+  seq         = '14';
+  produto     = '';
+  tipoProd    = '';
+  opcao       = 'Reimpressao';
+  Empresa     = 'Corfio';
+  Projeto     = 'Angular';
+  erroReimp   = false;
   itCodigo    = '';
   Impressora  = 'LPT1';
   Maquina     = '';
-  Metros      = '';
   codRie      = 0;
   fase        = 1;
   descItem    = '';
-  // metros      = '0';
   peso        = '0';
   pesoBalanca = 'no';
-  Quant       = 0;
   PesoBal     = '0.000';
   blockMetros = false;
 
   constructor( private        formBuilder: FormBuilder,
                private reimpressaoService: ReimpressaoService,
                private           snackBar: MatSnackBar) { }
-
   ngOnInit() {
-
 
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
+
     this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
+    });
+
+    this.sendFormGroup = this.formBuilder.group({
+      metrosControl: ['', Validators.required],
+       quantControl: ['', Validators.required]
     });
   }
 
@@ -63,22 +65,32 @@ export class ReimpressaoComponent implements OnInit {
     }
   }
 
-  reprintEtq() {this.reimpressaoService.sendReimp(this.Quant,
-                                                  this.itCodigo,
-                                                  this.Impressora,
-                                                  this.Maquina,
-                                                  this.Metros,
-                                                  this.codRie,
-                                                  this.codBobina,
-                                                  this.seq,
-                                                  this.PesoBal,
-                                                  this.fase,
-                                                  this.Empresa,
-                                                  this.Projeto)
-                                                .subscribe( res => {
-                                                  console.log(res);
-                                                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
-                                                }); }
+  reprintEtq() {
+
+    if (this.Quant != null && this.Metros == null) {
+      this.reimpressaoService
+      .sendReimp(this.Quant,
+                 this.itCodigo,
+                 this.Impressora,
+                 this.Maquina,
+                 this.Metros,
+                 this.codRie,
+                 this.codBobina,
+                 this.seq,
+                 this.PesoBal,
+                 this.fase,
+                 this.Empresa,
+                 this.Projeto)
+                 .subscribe( res => {
+                 console.log(res);
+                 this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
+                 });
+    } else {
+      this.snackBar.open('Informe a metragem, e a quantidade de etiquetas');
+    }
+
+
+  }
 
   consultaPesoBalanca(pesobalanca) {
     if (pesobalanca === 'yes') {
