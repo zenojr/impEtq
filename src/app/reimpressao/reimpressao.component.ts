@@ -94,12 +94,11 @@ export class ReimpressaoComponent implements OnInit {
 
   consultaPesoBalanca(pesobalanca) {
     if (pesobalanca === 'yes') {
-      console.log( 'data send to: ' + this.itCodigo + ' ' + this.seq + ' ' + this.Empresa );
-      this.blockMetros = true;
-      this.reimpressaoService.getPesoBalanca(this.itCodigo,
-                                             this.seq,
-                                             this.Empresa)
-                                             .subscribe(res => {
+        this.blockMetros = true;
+        this.reimpressaoService.getPesoBalanca(this.itCodigo,
+                                               this.seq,
+                                               this.Empresa)
+                                                .subscribe(res => {
                                                 let data    = this.reimpressaoService.convertXMLtoJSON(res);
                                                 data        = data['Root'];
                                                 data        = data['ttItem'];
