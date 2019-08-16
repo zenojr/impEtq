@@ -50,11 +50,8 @@
     @extend %flex-centeraround-container;
 }
 
-button {
-    display:         flex; 
-    align-items:     center;
-    justify-content: space-around;
-    flex-direction:  column;
+.btnPrint {
+    @extend %flex-centeraround-container;
 }
 
 .imprimirForm input {

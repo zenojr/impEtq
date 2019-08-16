@@ -86,7 +86,7 @@ export class ReimpressaoComponent implements OnInit {
                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                  });
     } else {
-      this.snackBar.open('Informe a metragem, e a quantidade de etiquetas');
+      this.snackBar.open('Informe a metragem, e a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }
 
 
