@@ -13,7 +13,10 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
      firstObsSubs: Subscription;
    firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+    sendFormGroup: FormGroup;
         dataQuery: any;
+            Quant: number;
+          Maquina: number;
        reinspecao = false;
          isLinear = true;
         fatorConv = '100';
@@ -23,10 +26,8 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
          tipoProd = '';
             opcao = 'Impressao';
              erro = false;
-            Quant = 0;
          itCodigo = '';
        Impressora = 'LPT1';
-          Maquina = '';
            Metros = '';
            codRie = 0;
              fase = 1;
@@ -38,29 +39,41 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                private    snackBar: MatSnackBar ) { }
 
   ngOnInit() {
-    this.firstFormGroup  = this.formBuilder.group({firstCtrl:
-                                                  ['', Validators.required]});
-    this.secondFormGroup = this.formBuilder.group({ secondCtrl:
-                                                  ['', Validators.required] });
+    this.firstFormGroup  = this.formBuilder.group(
+        {firstCtrl: ['', Validators.required]});
+
+    this.secondFormGroup = this.formBuilder.group({
+        secondCtrl: ['', Validators.required] });
+
+    this.sendFormGroup = this.formBuilder.group({
+         maquinaControl: ['', Validators.required],
+        etiquetaControl: ['', Validators.required]
+      });
   }
 
   ngOnDestroy() {}
 
   printEtq() {
-    this.impService.sendImp(this.Quant,
-                            this.itCodigo,
-                            this.Impressora,
-                            this.Maquina,
-                            this.Metros,
-                            this.codRie,
-                            this.codBobina,
-                            this.fase,
-                            this.Empresa,
-                            this.Projeto)
-                            .subscribe( res => {
-                              console.log(res);
-                              this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
-                            }); }
+    if ( this.Quant != null && this.Maquina != null ) {
+      alert('ok go!');
+      this.impService.sendImp(this.Quant,
+        this.itCodigo,
+        this.Impressora,
+        this.Maquina,
+        this.Metros,
+        this.codRie,
+        this.codBobina,
+        this.fase,
+        this.Empresa,
+        this.Projeto)
+        .subscribe( res => {
+          console.log(res);
+          this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
+        });
+    } else {
+      this.snackBar.open('Informe a maquina, e a quantidade de etiquetas', '[x]Fechar', { duration: 15000 });
+    }
+  }
 
   checkReinsp() {
     if (this.reinspecao === false) {
@@ -70,7 +83,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
         this.codBobina = '';
         this.dataQuery = null;
     } else {
-        this.reInspec = 'nao';
+        this.reInspec  = 'nao';
         this.itCodigo  = '';
         this.codRie    = 0;
         this.codBobina = '';

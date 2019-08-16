@@ -80,14 +80,16 @@
     <ul>
         <li> {{ dataQuery.itCodigo }}  {{ dataQuery.descItem }} {{ dataQuery.codRie }} </li>
     </ul>
-    <form class = "imprimirForm"> 
+    <form [formGroup] = "sendFormGroup" class = "imprimirForm"> 
         <mat-form-field>
             <input  matInput 
-                    placeholder  = "Máquina" 
-                    autocomplete = "off"
-                    [(ngModel)]  = "Maquina"
-                    name         = "Maquina"
-                    type         = "number">
+                    placeholder     = "Máquina" 
+                    autocomplete    = "off"
+                    [(ngModel)]     = "Maquina"
+                    name            = "Maquina"
+                    type            = "number"
+                    formControlName = "maquinaControl"
+                    required>
 
         </mat-form-field>
         <mat-form-field>
@@ -96,13 +98,16 @@
                     autocomplete = "off"
                     [(ngModel)]  = "Quant"
                     name         = "Quant"
-                    type         = "number">
+                    type         = "number"
+                    formControlName = "etiquetaControl"
+                    required>
         </mat-form-field>
+        <button mat-raised-button 
+                color   = "warn"
+                (click) = "printEtq()">Imprimir
+        </button>
     </form>
-    <button mat-raised-button 
-            color   = "warn"
-            (click) = "printEtq()">Imprimir
-    </button>
+    
 </div>
 <div>
     <ul>    
