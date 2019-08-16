@@ -12,9 +12,9 @@ import { MatSnackBar        } from '@angular/material/snack-bar';
 })
 export class ReimpressaoComponent implements OnInit {
 
-  firstFormGroup:  FormGroup;
+   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  dataQueryReimp:  any;
+   dataQueryReimp: any;
 
   reInspec   = 'nao';
   fatorConv  = '200';
@@ -42,9 +42,9 @@ export class ReimpressaoComponent implements OnInit {
   PesoBal     = '0.000';
   blockMetros = false;
 
-  constructor( private formBuilder:        FormBuilder,
+  constructor( private        formBuilder: FormBuilder,
                private reimpressaoService: ReimpressaoService,
-               private snackBar:           MatSnackBar) { }
+               private           snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
