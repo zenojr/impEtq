@@ -33,7 +33,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
            Metros = '';
            codRie = 0;
              fase = 1;
-          Empresa = 'Corfio';
+          Empresa = 'Eletrocal';
           Projeto = 'Angular';
 
   constructor( public          impService: ImpressaoService,

@@ -32,7 +32,7 @@ export class ReimpressaoComponent implements OnInit {
   produto     = '';
   tipoProd    = '';
   opcao       = 'Reimpressao';
-  Empresa     = 'Corfio';
+  Empresa     = 'Eletrocal';
   Projeto     = 'Angular';
   erroReimp   = false;
   itCodigo    = '';
