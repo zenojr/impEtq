@@ -11,6 +11,7 @@ import { PrincipalComponent     } from './principal/principal.component';
 import { ReimpressaoComponent   } from './reimpressao/reimpressao.component';
 import { ProdutoPipe            } from './impressao/produto.pipe';
 import { ImpressorasComponent   } from './impressoras/impressoras.component';
+import { ImpressorasService     } from './impressoras/impressoras.service';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ImpressorasComponent   } from './impressoras/impressoras.component';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [ ImpressaoService ],
+  providers: [ ImpressaoService, ImpressorasService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

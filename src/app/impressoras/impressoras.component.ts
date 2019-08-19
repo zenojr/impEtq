@@ -1,5 +1,7 @@
-import {                  Component, OnInit } from '@angular/core';
+import { ImpressorasService } from './impressoras.service';
+import {           Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
      selector: 'app-impressoras',
@@ -8,27 +10,19 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ImpressorasComponent implements OnInit {
 
-            dados: any;
-   firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  Impressora: string;
 
-  selectedProd     = null;
-  selectedTipoProd = null;
-  isLinear         = true;
-  reinspecao       = false;
-  checked          = false;
-
-  constructor( private formBuilder: FormBuilder ) { }
+  constructor( private formBuilder: FormBuilder,
+               private impressorasService: ImpressorasService ) { }
 
   ngOnInit() {
-
-    this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-
+    this.impressorasService.currentStatus.subscribe( impressora => this.Impressora = impressora );
   }
+
+  change() {
+    this.impressorasService.changeStatus(this.Impressora);
+  }
+
+
 
 }

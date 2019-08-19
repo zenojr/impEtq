@@ -1,8 +1,10 @@
+import { ImpressorasService                 } from './../impressoras/impressoras.service';
 import { ImpressaoService                   } from './impressao.service';
 import { Component, OnInit, OnDestroy       } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription, Observable           } from 'rxjs';
 import { MatSnackBar                        } from '@angular/material/snack-bar';
+
 
 @Component({
      selector: 'app-impressao',
@@ -34,9 +36,10 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
           Empresa = 'Corfio';
           Projeto = 'Angular';
 
-  constructor( public   impService: ImpressaoService,
-               private formBuilder: FormBuilder,
-               private    snackBar: MatSnackBar ) { }
+  constructor( public          impService: ImpressaoService,
+               private        formBuilder: FormBuilder,
+               private           snackBar: MatSnackBar,
+               private impressorasService: ImpressorasService) { }
 
   ngOnInit() {
     this.firstFormGroup  = this.formBuilder.group(
@@ -49,9 +52,14 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
          maquinaControl: ['', Validators.required],
         etiquetaControl: ['', Validators.required]
       });
+
+    this.impressorasService.currentStatus.subscribe( impressora => this.Impressora = impressora );
+
   }
 
   ngOnDestroy() {}
+
+  
 
   printEtq() {
     if ( this.Quant != null && this.Maquina != null ) {

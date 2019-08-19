@@ -1,9 +1,13 @@
+import { ImpressorasService } from './../impressoras/impressoras.service';
+
 import { ReimpressaoService } from './reimpressao.service';
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit,
+         Input              } from '@angular/core';
 import { FormGroup,
          FormBuilder,
          Validators         } from '@angular/forms';
 import { MatSnackBar        } from '@angular/material/snack-bar';
+
 
 @Component({
   selector:    'app-reimpressao',
@@ -19,6 +23,8 @@ export class ReimpressaoComponent implements OnInit {
            Metros: number;
             Quant: number;
 
+  Impressora = 'LPT1';
+
   reInspec    = 'nao';
   fatorConv   = '200';
   codBobina   = '';
@@ -30,7 +36,6 @@ export class ReimpressaoComponent implements OnInit {
   Projeto     = 'Angular';
   erroReimp   = false;
   itCodigo    = '';
-  Impressora  = 'LPT1';
   Maquina     = '';
   codRie      = 0;
   fase        = 1;
@@ -42,7 +47,8 @@ export class ReimpressaoComponent implements OnInit {
 
   constructor( private        formBuilder: FormBuilder,
                private reimpressaoService: ReimpressaoService,
-               private           snackBar: MatSnackBar) { }
+               private           snackBar: MatSnackBar,
+               private impressorasService: ImpressorasService) { }
   ngOnInit() {
 
     this.firstFormGroup = this.formBuilder.group({
@@ -57,7 +63,10 @@ export class ReimpressaoComponent implements OnInit {
       metrosControl: ['', Validators.required],
        quantControl: ['', Validators.required]
     });
+
+    this.impressorasService.currentStatus.subscribe( impressora => this.Impressora = impressora );
   }
+
 
   sendWithEnter(event) {
     if ( event.key === 'Enter' ) {
@@ -88,8 +97,6 @@ export class ReimpressaoComponent implements OnInit {
     } else {
       this.snackBar.open('Informe a metragem, e a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }
-
-
   }
 
   consultaPesoBalanca(pesobalanca) {

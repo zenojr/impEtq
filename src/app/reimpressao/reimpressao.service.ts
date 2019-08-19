@@ -7,7 +7,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class ReimpressaoService {
 
-  urlConsulta    = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq001V2ws.p?';
+  urlConsulta    = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq001V2ws.p?';
   urlReimpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq002V2ws.p?';
   urlPesoBalanca = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq004ws.p?';
 
