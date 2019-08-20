@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/etiquetas",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
