@@ -9,11 +9,12 @@ let count;
 
 app.use(morgan(':method :url :response-time'));
 
-app.use(express.static(__dirname + '/dist/etiquetas/'));
+app.use(express.static(__dirname + '/dist/etiquetas'));
 
 app.get('*/', (req, res) => {
     res.sendFile(path.join(__dirname), count++),
     count = req.query.PORT
+    
 });
 
 const server = http.createServer(app);
