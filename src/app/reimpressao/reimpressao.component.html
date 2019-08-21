@@ -60,25 +60,25 @@
                 {{ peso }} kg
             </button>            
         </div>            
-        <form class       = "imprimirForm"
-              [formGroup] = "sendFormGroup"> 
-            <mat-form-field>
+        <form class = "imprimirForm" [formGroup]="sendFormGroup"> 
+            <mat-form-field *ngIf="produto === 'retalho'">
                 <input matInput 
                        placeholder     = "Qtd. Metros" 
                        autocomplete    = "off"
                        [(ngModel)]     = "Metros"
                        name            = "Metros"
-                       [disabled]      = "blockMetros"
                        type            = "number"
-                       value           = "Metros"
+                       (value)         = "Metros"
                        formControlName = "metrosControl"
                        required>
             </mat-form-field>
+        
             <mat-form-field>
                 <input matInput 
                        placeholder     = "Qtd. Etiquetas" 
                        autocomplete    = "off"
                        [(ngModel)]     = "Quant"
+                       (value)         = "Quant"
                        type            = "number"
                        formControlName = "quantControl"
                        name            = "Quant">
@@ -96,8 +96,8 @@
         Impressora Selecionada: {{ Impressora }}
     </div>        
     
-    <!-- <div>
-        <ul *ngIf = "dataQueryReimp != null">
+    <div>
+        <!-- <ul *ngIf = "dataQueryReimp != null">
             <li> itCodigo   : {{ dataQueryReimp.itCodigo   }} </li>
             <li> Impressora : {{ dataQueryReimp.Impressora }} </li>
             <li> Maquina    : {{ dataQueryReimp.Maquina    }} </li>
@@ -109,7 +109,7 @@
             <li> peso       : {{ dataQueryReimp.peso       }} </li>
             <li> pesoBalanca: {{ dataQueryReimp.pesoBalanca}} </li>
             <li> erro       : {{ dataQueryReimp.erro       }} </li>
-        </ul>
+        </ul> -->
         <ul>
             <li> Metros   : {{ Metros    }} </li>
             <li> Quant    : {{ Quant     }} </li>
@@ -121,5 +121,5 @@
             <li> tipoProd : {{ tipoProd  }} </li> 
             <li> opcao    : {{ opcao     }} </li>
         </ul>
-    </div> -->
+    </div>
 </div>

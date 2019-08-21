@@ -21,12 +21,12 @@ export class ReimpressaoComponent implements OnInit {
     sendFormGroup: FormGroup;
    dataQueryReimp: any;
            Metros: number;
-            Quant: number;
+            Quant: string;
 
   Impressora = 'LPT1';
 
   reInspec    = 'nao';
-  fatorConv   = '200';
+  fatorConv   = '100';
   codBobina   = '';
   seq         = '14';
   produto     = '';
@@ -60,7 +60,7 @@ export class ReimpressaoComponent implements OnInit {
     });
 
     this.sendFormGroup = this.formBuilder.group({
-      metrosControl: ['', Validators.required],
+      metrosControl: [{value: '', disabled: true}, Validators.required],
        quantControl: ['', Validators.required]
     });
 
@@ -75,7 +75,7 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   reprintEtq() {
-
+    console.log(this.Quant);
     if (this.Quant != null ) {
       this.reimpressaoService
       .sendReimp(this.Quant,
@@ -92,10 +92,11 @@ export class ReimpressaoComponent implements OnInit {
                  this.Projeto)
                  .subscribe( res => {
                  console.log(res);
+                 console.log(this.Impressora);
                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                  });
     } else {
-      this.snackBar.open('Informe a metragem, e a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
+      this.snackBar.open('Informe a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }
   }
 
@@ -112,6 +113,7 @@ export class ReimpressaoComponent implements OnInit {
                                                 data        = data['Registro'];
                                                 this.Metros = data['metros'];
                                                 this.peso   = data['peso'];
+                                                console.log(this.Quant);
                                                 console.log(data);
                                               });
     } else {
