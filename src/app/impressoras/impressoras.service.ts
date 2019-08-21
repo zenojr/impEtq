@@ -7,12 +7,18 @@ import { BehaviorSubject } from 'rxjs';
 export class ImpressorasService {
 
   private statusPrinter = new BehaviorSubject<string>('LPT1');
-  currentStatus = this.statusPrinter.asObservable();
+  currentStatus         = this.statusPrinter.asObservable();
 
+  private empresa = new BehaviorSubject<string>('Eletrocal');
+  currentEmpresa  = this.empresa.asObservable();
   constructor() { }
 
   changeStatus(status: string) {
     this.statusPrinter.next(status);
+  }
+
+  changeEmpresa(statusEmpresa: string) {
+    this.empresa.next(statusEmpresa);
   }
 
 }

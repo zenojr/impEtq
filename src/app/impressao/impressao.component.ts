@@ -33,7 +33,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
            Metros = '';
            codRie = 0;
              fase = 1;
-          Empresa = 'Eletrocal';
+          Empresa = '';
           Projeto = 'Angular';
 
   constructor( public          impService: ImpressaoService,
@@ -54,12 +54,11 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
       });
 
     this.impressorasService.currentStatus.subscribe( impressora => this.Impressora = impressora );
+    this.impressorasService.currentEmpresa.subscribe( empresa => this.Empresa = empresa );
 
   }
 
   ngOnDestroy() {}
-
-  
 
   printEtq() {
     if ( this.Quant != null && this.Maquina != null ) {

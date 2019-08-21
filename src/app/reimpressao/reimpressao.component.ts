@@ -32,7 +32,7 @@ export class ReimpressaoComponent implements OnInit {
   produto     = '';
   tipoProd    = '';
   opcao       = 'Reimpressao';
-  Empresa     = 'Eletrocal';
+  Empresa     = '';
   Projeto     = 'Angular';
   erroReimp   = false;
   itCodigo    = '';
@@ -65,6 +65,7 @@ export class ReimpressaoComponent implements OnInit {
     });
 
     this.impressorasService.currentStatus.subscribe( impressora => this.Impressora = impressora );
+    this.impressorasService.currentEmpresa.subscribe( empresa => this.Empresa = empresa );
   }
 
 
@@ -95,12 +96,18 @@ export class ReimpressaoComponent implements OnInit {
                  console.log(this.Impressora);
                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                  });
+                 this.peso
     } else {
       this.snackBar.open('Informe a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }
   }
 
   consultaPesoBalanca(pesobalanca) {
+    console.log(pesobalanca);
+    console.log('entrada metros:' + this.Metros);
+    console.log('entrada peso:' + this.peso);
+    this.Metros = 0;
+    this.peso = '0';
     if (pesobalanca === 'yes') {
         this.blockMetros = true;
         this.reimpressaoService.getPesoBalanca(this.itCodigo,
@@ -113,6 +120,8 @@ export class ReimpressaoComponent implements OnInit {
                                                 data        = data['Registro'];
                                                 this.Metros = data['metros'];
                                                 this.peso   = data['peso'];
+                                                console.log('saida metros:' + this.Metros);
+                                                console.log('saida peso:' + this.peso);
                                                 console.log(this.Quant);
                                                 console.log(data);
                                               });
@@ -137,6 +146,8 @@ export class ReimpressaoComponent implements OnInit {
                                         this.erroReimp      = true;
                                         console.log(doc);
                                       } else {
+                                        this.peso           = '0';
+                                        this.Metros         = 0;
                                         this.erroReimp      = false;
                                         let data            = this.reimpressaoService.convertXMLtoJSON(doc);
                                         data                = data['Root'];
