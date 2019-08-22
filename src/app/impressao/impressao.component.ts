@@ -61,9 +61,12 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   ngOnDestroy() {}
 
   printEtq() {
+    console.log(this.Quant);
+    console.log(this.Maquina);
+
     if ( this.Quant != null && this.Maquina != null ) {
-      alert('ok go!');
-      this.impService.sendImp(this.Quant,
+        this.impService.sendImp(
+        this.Quant,
         this.itCodigo,
         this.Impressora,
         this.Maquina,
@@ -99,6 +102,8 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
   }
 
   consultaImpressao() {
+    this.Quant = null;
+    this.Maquina = null;
     this.impService.getImpressao( this.fatorConv,
                                   this.codBobina,
                                   this.reInspec,
