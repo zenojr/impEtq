@@ -1,11 +1,11 @@
-  ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-  —— Programa..: Sistema de impressão de etiquetas                                                                  ——
-  —— Funcao....: Recebe solicitação de Impressão e Reimpressão de etiquetas                                         ——
-  —— WebService:                                                                                                    ——
-  —— Autor.....: Zeno França Jr.                                                                                    ——
-  —— Data......: 15/08/2019                                                                                         ——
-  —— Data Ver2.: 15/08/2019  Versão em Angular 8                                                                    ——
-  ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————— 
+  
+ #  Programa..: Sistema de impressão de etiquetas                                                                  
+ #  Funcao....: Recebe solicitação de Impressão e Reimpressão de etiquetas                                         
+ #  WebService:                                                                                                    
+ #  Autor.....: Zeno França Jr.                                                                                    
+ #  Data......: 15/08/2019                                                                                         
+ #  Data Ver2.: 15/08/2019  Versão em Angular 8                                                                    
+   
 #
 
 # Etiquetas
