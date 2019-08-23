@@ -19,5 +19,5 @@ app.get('*/', (req, res) => {
 
 const server = http.createServer(app);
 server.listen(port, () => {
-    console.log('Impressao de etiquetas running...');
+    console.log('Imp etiq running port: ' + port  );
 });
