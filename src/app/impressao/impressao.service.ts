@@ -7,8 +7,8 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class ImpressaoService {
 
-  urlImpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq001V2ws.p?';
-  urlEtiquetas = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelt/etq002V2ws.p?';
+  urlImpressao = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq001V2ws.p?';
+  urlEtiquetas = 'http://192.168.0.7/cgi-bin/wspd_cgi.sh/WService=emswebelttst/etq002V2ws.p?';
 
   constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
@@ -37,7 +37,7 @@ export class ImpressaoService {
           codBobina,
           fase,
           Empresa,
-          Projeto) {return this.http.get(this.urlEtiquetas + '?Quant='      + Quant      +
+          Projeto) {return this.http.get(this.urlEtiquetas + 'Quant='      + Quant      +
                                                              '&itCodigo='   + itCodigo   +
                                                              '&Impressora=' + Impressora +
                                                              '&Maquina='    + Maquina    +
