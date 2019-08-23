@@ -3,7 +3,7 @@
 Recebe solicitação de Impressão e Reimpressão de etiquetas
 
 ## WebService:
-192.168.0.241 - utiliza a porta 4202 para atender a impressão de etiquetas na Eletrocal e porta 4203 para atender a Corfio.
+192.168.0.241 - utiliza a porta `4202` para atender a impressão de etiquetas na Eletrocal e porta `4203` para atender a Corfio.
 Para execução do projeto utilizar o comando : `pm2 start impEtqEletrocal` para eletrocal e `pm2 start impEtqCorfio` para Corfio.
 
 ## Setup do projeto (Necessário somente em caso de alteração no servidor); 
