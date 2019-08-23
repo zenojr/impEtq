@@ -37,7 +37,7 @@ export class ImpressaoService {
           codBobina,
           fase,
           Empresa,
-          Projeto) {return this.http.get(this.urlEtiquetas + 'Quant='      + Quant      +
+          Projeto) {return this.http.get(this.urlEtiquetas + 'Quant='       + Quant      +
                                                              '&itCodigo='   + itCodigo   +
                                                              '&Impressora=' + Impressora +
                                                              '&Maquina='    + Maquina    +
