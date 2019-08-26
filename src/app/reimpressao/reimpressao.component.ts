@@ -154,7 +154,6 @@ export class ReimpressaoComponent implements OnInit {
                                         this.dataQueryReimp = data;
                                         this.pesoBalanca    = data['pesoBalanca'];
                                         this.itCodigo       = data['itCodigo'];
-                                        this.fase           = data['fase'];
                                         this.blockMetros    = false;
                                         this.consultaPesoBalanca( this.pesoBalanca );
                                         console.log( data);
