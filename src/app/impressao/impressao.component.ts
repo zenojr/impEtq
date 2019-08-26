@@ -32,7 +32,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
        Impressora = 'LPT1';
            Metros = '';
            codRie = 0;
-             fase = 1;
+             fase = 0;
           Empresa = '';
           Projeto = 'Angular';
 
@@ -126,7 +126,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
                                       this.dataQuery = data;
                                       this.itCodigo  = data['itCodigo'];
                                       this.codRie    = data['codRie'];
-                                      console.log(this.itCodigo);
+                                      this.fase      = data['fase'];
                                       console.log(data);
                                     }
                                   });

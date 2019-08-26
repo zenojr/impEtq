@@ -26,9 +26,9 @@ export class ReimpressaoComponent implements OnInit {
   Impressora = 'LPT1';
 
   reInspec    = 'nao';
-  fatorConv   = '100';
+  fatorConv   = '';
   codBobina   = '';
-  seq         = '14';
+  seq         = '';
   produto     = '';
   tipoProd    = '';
   opcao       = 'Reimpressao';
@@ -38,7 +38,7 @@ export class ReimpressaoComponent implements OnInit {
   itCodigo    = '';
   Maquina     = '';
   codRie      = 0;
-  fase        = 1;
+  fase        = 9;
   descItem    = '';
   peso        = '0';
   pesoBalanca = 'no';
@@ -76,7 +76,6 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   reprintEtq() {
-    console.log(this.Quant);
     if (this.Quant != null ) {
       this.reimpressaoService
       .sendReimp(this.Quant,
@@ -96,7 +95,6 @@ export class ReimpressaoComponent implements OnInit {
                  console.log(this.Impressora);
                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                  });
-                 this.peso
     } else {
       this.snackBar.open('Informe a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }
@@ -156,6 +154,7 @@ export class ReimpressaoComponent implements OnInit {
                                         this.dataQueryReimp = data;
                                         this.pesoBalanca    = data['pesoBalanca'];
                                         this.itCodigo       = data['itCodigo'];
+                                        this.fase           = data['fase'];
                                         this.blockMetros    = false;
                                         this.consultaPesoBalanca( this.pesoBalanca );
                                         console.log( data);
