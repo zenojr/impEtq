@@ -60,7 +60,7 @@ export class ReimpressaoComponent implements OnInit {
     });
 
     this.sendFormGroup = this.formBuilder.group({
-      metrosControl: [{value: '', disabled: true}, Validators.required],
+      metrosControl: [{value: '0', disabled: true}, Validators.required],
        quantControl: ['', Validators.required]
     });
 
@@ -101,12 +101,13 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   consultaPesoBalanca(pesobalanca) {
-    console.log(pesobalanca);
-    console.log('entrada metros:' + this.Metros);
-    console.log('entrada peso:' + this.peso);
+    console.log('Entrada peso bal: ' + pesobalanca);
+    console.log('entrada metros: ' + this.Metros);
+    console.log('entrada peso: ' + this.peso);
     this.Metros = 0;
     this.peso = '0';
     if (pesobalanca === 'yes') {
+        alert('peso bal ' + pesobalanca);
         this.blockMetros = true;
         this.reimpressaoService.getPesoBalanca(this.itCodigo,
                                                this.seq,
@@ -144,6 +145,8 @@ export class ReimpressaoComponent implements OnInit {
                                         this.erroReimp      = true;
                                         console.log(doc);
                                       } else {
+                                        this.pesoBalanca    = 'no';
+                                        console.log('change peso: ' + this.pesoBalanca);
                                         this.peso           = '0';
                                         this.Metros         = 0;
                                         this.erroReimp      = false;

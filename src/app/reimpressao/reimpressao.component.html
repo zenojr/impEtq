@@ -59,9 +59,30 @@
                 <mat-icon class = "tab-icon">autorenew</mat-icon>
                 {{ peso }} kg
             </button>            
-        </div>            
-        <form class = "imprimirForm" [formGroup]="sendFormGroup"> 
-            <mat-form-field *ngIf="produto === 'retalho'">
+        </div>
+        
+        <div class="imprimirForm">
+            <mat-form-field>
+              <input matInput 
+                     placeholder = "Qtd. Metros"
+                     [(ngModel)] = "Metros"
+                     type        = "number"
+                     disabled    = "!blockMetros">
+            </mat-form-field>
+          
+            <mat-form-field>
+              <textarea matInput placeholder="Textarea"></textarea>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-select placeholder="Select">
+                <mat-option value="option">Option</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        <!-- <form class = "imprimirForm" [formGroup]="sendFormGroup"> 
+            <mat-form-field >
                 <input matInput 
                        placeholder     = "Qtd. Metros" 
                        autocomplete    = "off"
@@ -89,7 +110,7 @@
                         (click) = "reprintEtq()">Imprimir
                 </button>
             </div>
-        </form>
+        </form> -->
     </div>
     <div>
         Empresa: {{ Empresa }} <br>
@@ -110,7 +131,7 @@
             <li> pesoBalanca: {{ dataQueryReimp.pesoBalanca}} </li>
             <li> erro       : {{ dataQueryReimp.erro       }} </li>
         </ul> -->
-        <!-- <ul>
+        <ul>
             <li> Metros   : {{ Metros    }} </li>
             <li> Quant    : {{ Quant     }} </li>
             <li> reInspec : {{ reInspec  }} </li> 
@@ -120,6 +141,6 @@
             <li> produto  : {{ produto   }} </li> 
             <li> tipoProd : {{ tipoProd  }} </li> 
             <li> opcao    : {{ opcao     }} </li>
-        </ul> -->
+        </ul>
     </div>
 </div>
