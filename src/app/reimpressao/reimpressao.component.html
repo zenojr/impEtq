@@ -61,27 +61,9 @@
             </button>            
         </div>
         
-        <div class="imprimirForm">
-            <mat-form-field>
-              <input matInput 
-                     placeholder = "Qtd. Metros"
-                     [(ngModel)] = "Metros"
-                     type        = "number"
-                     disabled    = "!blockMetros">
-            </mat-form-field>
-          
-            <mat-form-field>
-              <textarea matInput placeholder="Textarea"></textarea>
-            </mat-form-field>
-          
-            <mat-form-field>
-              <mat-select placeholder="Select">
-                <mat-option value="option">Option</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+        
 
-        <!-- <form class = "imprimirForm" [formGroup]="sendFormGroup"> 
+        <form class = "imprimirForm" [formGroup]="sendFormGroup"> 
             <mat-form-field >
                 <input matInput 
                        placeholder     = "Qtd. Metros" 
@@ -110,7 +92,7 @@
                         (click) = "reprintEtq()">Imprimir
                 </button>
             </div>
-        </form> -->
+        </form>
     </div>
     <div>
         Empresa: {{ Empresa }} <br>

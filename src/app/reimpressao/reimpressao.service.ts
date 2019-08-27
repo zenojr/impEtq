@@ -47,22 +47,22 @@ export class ReimpressaoService {
                                                                  '&Projeto='    + Projeto,
                                                                  {responseType: 'text'}); }
 
-  getData(reInspec,
-          fatorConv,
-          codBobina,
-          seq,
-          produto,
-          tipoProd,
-          opcao,
-          Projeto) { return this.http.get(this.urlConsulta + 'reInspec='   + reInspec  +
-                                                             '&fatorConv=' + fatorConv +
-                                                             '&codBobina=' + codBobina +
-                                                             '&seq='       + seq       +
-                                                             '&produto='   + produto   +
-                                                             '&tipoProd='  + tipoProd  +
-                                                             '&opcao='     + opcao     +
-                                                             '&Projeto='   + Projeto,
-                                                             {responseType: 'text'}); }
+  consultaReimp(reInspec,
+                fatorConv,
+                codBobina,
+                seq,
+                produto,
+                tipoProd,
+                opcao,
+                Projeto) { return this.http.get(this.urlConsulta + 'reInspec='   + reInspec  +
+                                                                   '&fatorConv=' + fatorConv +
+                                                                   '&codBobina=' + codBobina +
+                                                                   '&seq='       + seq       +
+                                                                   '&produto='   + produto   +
+                                                                   '&tipoProd='  + tipoProd  +
+                                                                   '&opcao='     + opcao     +
+                                                                   '&Projeto='   + Projeto,
+                                                                   {responseType: 'text'}); }
 
 
   convertXMLtoJSON(doc) { const dataRec = doc.toString();
