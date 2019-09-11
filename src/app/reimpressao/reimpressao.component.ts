@@ -98,6 +98,7 @@ export class ReimpressaoComponent implements OnInit {
       this.Quant = 0;
       this.codBobina = '';
       this.Metros = 0;
+      this.dataQueryReimp = null;
     } else {
       this.snackBar.open('Informe a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }

@@ -83,6 +83,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
         this.Quant = 0;
         this.codBobina = '';
         this.Metros = 0;
+        this.dataQuery = null;
     } else {
       this.snackBar.open('Informe a maquina, e a quantidade de etiquetas', '[x]Fechar', { duration: 15000 });
     }
