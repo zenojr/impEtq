@@ -30,7 +30,7 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
              erro = false;
          itCodigo = '';
        Impressora = 'LPT1';
-           Metros = '';
+           Metros = 0;
            codRie = 0;
              fase = 0;
           Empresa = '';
@@ -80,6 +80,9 @@ export class ImpressaoComponent implements OnInit, OnDestroy {
           console.log(res);
           this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
         });
+        this.Quant = 0;
+        this.codBobina = '';
+        this.Metros = 0;
     } else {
       this.snackBar.open('Informe a maquina, e a quantidade de etiquetas', '[x]Fechar', { duration: 15000 });
     }

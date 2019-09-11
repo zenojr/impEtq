@@ -19,12 +19,11 @@ export class ReimpressaoComponent implements OnInit {
     sendFormGroup: FormGroup;
    dataQueryReimp: any;
 
-            Quant: string;
-
+  Quant       = 0;
   Impressora  = 'LPT1';
   Metros      = 0;
   reInspec    = 'nao';
-  fatorConv   = '';
+  fatorConv   = '100';
   codBobina   = '';
   seq         = '';
   produto     = '';
@@ -76,7 +75,7 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   reprintEtq() {
-    if (this.Quant != null ) {
+    if (this.Quant !== 0 ) {
       this.reimpressaoService
       .sendReimp(this.Quant,
                  this.itCodigo,
@@ -95,6 +94,10 @@ export class ReimpressaoComponent implements OnInit {
                  console.log(this.Impressora);
                  this.snackBar.open('Resposta: ' + res, '[x]Fechar', { duration: 15000 });
                  });
+
+      this.Quant = 0;
+      this.codBobina = '';
+      this.Metros = 0;
     } else {
       this.snackBar.open('Informe a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
     }
