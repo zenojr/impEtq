@@ -4,7 +4,7 @@ Recebe solicitação de Impressão e Reimpressão de etiquetas
 
 ## WebService:
 192.168.0.241 - utiliza a porta `4202` para atender a impressão de etiquetas na Eletrocal e porta `5201` para atender a Corfio.
-Para execução do projeto utilizar o comando : `pm2 start impEtqEletrocal` para eletrocal e `pm2 start impEtqCorfio` para Corfio. Ambos os comandos devem ser executados dentro das pastas de seus respectivos projetos
+Para execução do projeto utilizar o comando : na pasta /zeno `./startAll` ou  `pm2 start impEtqEletrocal` para eletrocal e `pm2 start impEtqCorfio` para Corfio. Ambos os comandos devem ser executados dentro das pastas de seus respectivos projetos
 
 ## Setup do projeto (Necessário somente em caso de alteração); 
 O projeto é atualizado através do Github para pegar as alterações de versão deve-se utilizar o comando `git pull` (Atenção: O comando git pull vai sobreescrever todos os parametros locais do projeto - (Empresa). Após a execução deve-se configurar novamente para cada projeto conforme processo descrito abaixo). 
