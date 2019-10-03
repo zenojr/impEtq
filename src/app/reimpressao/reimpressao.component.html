@@ -60,10 +60,24 @@
             </button>            
         </div>
         
+        <!-- <div>
+            <form class="imprimirForm">
+                <mat-form-field class="example-full-width">
+                  <input disabled="blockMetros" 
+                         matInput placeholder="Qtd.Metros" 
+                         value="Metros"
+                         [(ngModel)] = "Metros">
+                </mat-form-field>
+              
+                <mat-form-field class="example-full-width">
+                  <textarea matInput placeholder="Leave a comment"></textarea>
+                </mat-form-field>
+              </form>
+        </div> -->
         
 
-        <form class = "imprimirForm" [formGroup]="sendFormGroup"> 
-            <mat-form-field >
+        <form class = "imprimirForm" > 
+            <mat-form-field>
                 <input matInput 
                        placeholder     = "Qtd. Metros" 
                        autocomplete    = "off"
@@ -71,7 +85,7 @@
                        name            = "Metros"
                        type            = "number"
                        (value)         = "Metros"
-                       formControlName = "metrosControl"
+                       [disabled]      = "blockMetros"
                        required>
             </mat-form-field>
         
@@ -82,7 +96,7 @@
                        [(ngModel)]     = "Quant"
                        (value)         = "Quant"
                        type            = "number"
-                       formControlName = "quantControl"
+                       
                        name            = "Quant">
             </mat-form-field>
             <div class = "btnPrint">

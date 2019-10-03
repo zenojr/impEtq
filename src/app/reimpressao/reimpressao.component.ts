@@ -7,6 +7,7 @@ import { FormGroup,
          Validators         } from '@angular/forms';
 import { MatSnackBar        } from '@angular/material/snack-bar';
 
+
 @Component({
   selector:    'app-reimpressao',
   templateUrl: './reimpressao.component.html',
@@ -75,7 +76,8 @@ export class ReimpressaoComponent implements OnInit {
   }
 
   reprintEtq() {
-    if (this.Quant !== 0 ) {
+    console.log( 'recieve' + this.Metros);
+    if (this.Quant !== 0 && this.Metros !== 0 ) {
       this.reimpressaoService
       .sendReimp(this.Quant,
                  this.itCodigo,
@@ -100,15 +102,16 @@ export class ReimpressaoComponent implements OnInit {
       this.Metros = 0;
       this.dataQueryReimp = null;
     } else {
-      this.snackBar.open('Informe a quantidade de etiquetas', '[x Fechar]', { duration: 15000 });
+      this.snackBar.open('Informe a quantidade de etiquetas e a metragem', '[x Fechar]', { duration: 15000 });
     }
   }
 
   consultaPesoBalanca(pesobalanca) {
-    console.log('Entrada peso bal: ' + pesobalanca);
+    console.log('peso bal consulta peso: ' + pesobalanca);
     if (pesobalanca === 'yes') {
         console.log('peso bal ' + pesobalanca);
         this.blockMetros = true;
+        console.log( 'block: ' + this.blockMetros );
         this.reimpressaoService.getPesoBalanca(this.itCodigo,
                                                this.seq,
                                                this.Empresa)
@@ -147,7 +150,8 @@ export class ReimpressaoComponent implements OnInit {
                                               this.erroReimp      = true;
                                               console.log(doc);
                                             } else {
-                                              this.pesoBalanca    = 'nulo';
+                                              // this.pesoBalanca    = 'nulo';
+                                              this.blockMetros = false;
                                               console.log('Enviou consulta peso: ' + this.pesoBalanca);
                                               this.Metros         = 0;
                                               this.erroReimp      = false;
@@ -157,8 +161,12 @@ export class ReimpressaoComponent implements OnInit {
                                               data                = data['Registro'];
                                               this.dataQueryReimp = data;
                                               this.pesoBalanca    = data['pesoBalanca'];
+                                              console.log('pesoBalancaFromData: ' + this.pesoBalanca );
                                               this.itCodigo       = data['itCodigo'];
-                                              this.consultaPesoBalanca( this.pesoBalanca );
+                                              if ( this.pesoBalanca === 'yes' ) {
+                                                this.consultaPesoBalanca( this.pesoBalanca );
+                                              }
+
                                               console.log(data);
                                             }
                                 }); }

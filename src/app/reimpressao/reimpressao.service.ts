@@ -1,6 +1,7 @@
 import { HttpClient         } from '@angular/common/http';
 import { Injectable         } from '@angular/core';
 import { NgxXml2jsonService } from 'ngx-xml2json';
+import { MatSnackBar        } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ReimpressaoService {
 
 
   constructor( private     http: HttpClient,
-               private xml2Json: NgxXml2jsonService ) { }
+               private xml2Json: NgxXml2jsonService,
+               private snackBar: MatSnackBar ) { }
 
   getPesoBalanca(itCodigo,
                  seq,
@@ -33,19 +35,26 @@ export class ReimpressaoService {
             PesoBal,
             fase,
             Empresa,
-            Projeto) {return this.http.get(this.urlReimpressao + 'Quant='       + Quant      +
-                                                                 '&itCodigo='   + itCodigo   +
-                                                                 '&Impressora=' + Impressora +
-                                                                 '&Maquina='    + Maquina    +
-                                                                 '&Metros='     + Metros     +
-                                                                 '&codRie='     + codRie     +
-                                                                 '&codBobina='  + codBobina  +
-                                                                 '&seq='        + seq        +
-                                                                 '&PesoBal='    + PesoBal    +
-                                                                 '&fase='       + fase       +
-                                                                 '&Empresa='    + Empresa    +
-                                                                 '&Projeto='    + Projeto,
-                                                                 {responseType: 'text'}); }
+            Projeto) {
+              if ( Metros !== '0'  ) {
+                return this.http.get(this.urlReimpressao + 'Quant='       + Quant      +
+                '&itCodigo='   + itCodigo   +
+                '&Impressora=' + Impressora +
+                '&Maquina='    + Maquina    +
+                '&Metros='     + Metros     +
+                '&codRie='     + codRie     +
+                '&codBobina='  + codBobina  +
+                '&seq='        + seq        +
+                '&PesoBal='    + PesoBal    +
+                '&fase='       + fase       +
+                '&Empresa='    + Empresa    +
+                '&Projeto='    + Projeto,
+                {responseType: 'text'});
+              } else {
+                this.snackBar.open( 'Resposta: ' + 'Quantidade e Metros não informado, produto precisa ser pesado', 
+                                    '[x]Fechar', { duration: 15000 } );
+              }
+             }
 
   consultaReimp(reInspec,
                 fatorConv,
