@@ -12,6 +12,7 @@ import { ReimpressaoComponent   } from './reimpressao/reimpressao.component';
 import { ProdutoPipe            } from './impressao/produto.pipe';
 import { ImpressorasComponent   } from './impressoras/impressoras.component';
 import { ImpressorasService     } from './impressoras/impressoras.service';
+import { ReimpressaoDirective } from './reimpressao/reimpressao.directive';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ImpressorasService     } from './impressoras/impressoras.service';
     PrincipalComponent,
     ReimpressaoComponent,
     ProdutoPipe,
-    ImpressorasComponent
+    ImpressorasComponent,
+    ReimpressaoDirective
   ],
   imports: [
     BrowserModule,
