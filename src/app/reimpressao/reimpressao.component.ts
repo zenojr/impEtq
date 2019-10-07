@@ -77,7 +77,7 @@ export class ReimpressaoComponent implements OnInit {
 
   reprintEtq() {
     console.log( 'recieve' + this.Metros);
-    if (this.Quant !== 0 && this.Metros !== 0 ) {
+    if (this.Quant !== 0 ) {
       this.reimpressaoService
       .sendReimp(this.Quant,
                  this.itCodigo,

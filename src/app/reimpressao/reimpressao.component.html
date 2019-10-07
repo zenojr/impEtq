@@ -77,7 +77,7 @@
         
 
         <form class = "imprimirForm" > 
-            <mat-form-field>
+            <mat-form-field *ngIf="produto !== 'Bobininha' ">
                 <input matInput 
                        placeholder     = "Qtd. Metros" 
                        autocomplete    = "off"
@@ -86,7 +86,8 @@
                        type            = "number"
                        (value)         = "Metros"
                        [disabled]      = "blockMetros"
-                       required>
+                       required
+                       id="inputMetros">
             </mat-form-field>
         
             <mat-form-field>

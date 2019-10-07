@@ -36,7 +36,7 @@ export class ReimpressaoService {
             fase,
             Empresa,
             Projeto) {
-              if ( Metros !== '0'  ) {
+              // if ( Metros !== '0'  ) {
                 return this.http.get(this.urlReimpressao + 'Quant='       + Quant      +
                 '&itCodigo='   + itCodigo   +
                 '&Impressora=' + Impressora +
@@ -50,10 +50,10 @@ export class ReimpressaoService {
                 '&Empresa='    + Empresa    +
                 '&Projeto='    + Projeto,
                 {responseType: 'text'});
-              } else {
-                this.snackBar.open( 'Resposta: ' + 'Quantidade e Metros não informado, produto precisa ser pesado', 
-                                    '[x]Fechar', { duration: 15000 } );
-              }
+              // } else {
+              //   this.snackBar.open( 'Resposta: ' + 'Quantidade e Metros não informado, produto precisa ser pesado', 
+              //                       '[x]Fechar', { duration: 15000 } );
+              // }
              }
 
   consultaReimp(reInspec,

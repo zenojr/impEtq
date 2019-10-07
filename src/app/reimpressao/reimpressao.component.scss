@@ -37,6 +37,10 @@
     padding-right: 5px;
 }
 
+#inputMetros {
+    color: black;
+}
+
 .consultaContainer {
     @extend %flex-centeraround-container;
 }
