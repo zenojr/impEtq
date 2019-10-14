@@ -1,6 +1,12 @@
 {
   "name": "etiquetas",
-  "version": "0.0.0",
+  "author": { 
+      "name": "Zeno França Jr.",
+      "email": "zfrancajunior@gmail.com",
+      "url": "zeno-website.web.app"
+    },
+
+  "version": "1.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
